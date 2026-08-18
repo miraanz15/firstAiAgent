@@ -14,6 +14,7 @@ I create content about technology. My audience wants practical, jargon-free outp
 # Active Workflows
 Instruction files in /workflow. When I name one, read its file first and follow it exactly.
 - **Research Report** — `workflow/research-report.md` — trigger: "run the research workflow on <topic>" → scoped, source-cited report in /output, ending with 2 X post drafts
+  - Also installed machine-wide as a Skill at `~/.claude/skills/research-report/SKILL.md`, invocable as `/research-report` from any directory. The two are separate copies — mirror any edit to both.
 
 # Project Structure
 /workflow - instruction files

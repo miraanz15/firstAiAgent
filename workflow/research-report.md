@@ -8,6 +8,7 @@ Goal: take a topic, research it properly, and produce a clean, source-cited mark
 - `depth: light` — ~5 sources, quick scan
 - `depth: deep` — 20+ sources, one parallel subagent per sub-question
 - `skip outline approval` — go straight from scoping to research
+- `length: <N>` — target word count for the report body, overriding the ~800–1200 default
 - a custom section list — use mine instead of the template's
 
 ---
