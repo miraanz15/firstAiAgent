@@ -236,18 +236,31 @@ td code{font-size:.82em}
   font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint)
 }
 @media (prefers-reduced-motion:reduce){ *{animation:none!important; transition:none!important} }
+
+/* ---------- example box ---------- */
+.eg{
+  border:1px solid var(--rule); border-left:3px solid var(--ink-faint); background:var(--surface);
+  border-radius:0 4px 4px 0; padding:1rem 1.15rem; margin:1.4rem 0; font-size:.95rem; max-width:44rem
+}
+.eg p:first-child{margin-top:0} .eg p:last-child{margin-bottom:0}
+.eg ul{margin-bottom:0}
+.eg-label{
+  font-family:var(--mono); font-size:.64rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-faint); display:block; margin-bottom:.45rem
+}
+.eg .bad{color:var(--ink-faint)}
 </style>
 
 <div class="shell">
 
 <header class="mast">
-  <p class="mast-eyebrow">A beginner's guide to what you built</p>
+  <p class="mast-eyebrow">A guide for beginners</p>
   <h1>The Research Agent Handbook</h1>
-  <p class="mast-sub">Every idea behind this project, in plain English &mdash; from &ldquo;what even is AI&rdquo; to the exact five phases your research workflow runs through. No prior knowledge assumed.</p>
+  <p class="mast-sub">Simple English. No hard words. This guide explains what AI is, what Claude is, what an agent is, and how your project works &mdash; step by step, with examples.</p>
   <div class="mast-meta">
-    <span>Written 18 Aug 2026</span>
-    <span>~25 min read</span>
-    <span>19 sections &middot; 8 diagrams</span>
+    <span>18 Aug 2026</span>
+    <span>~25 min</span>
+    <span>19 parts &middot; 8 pictures</span>
   </div>
 </header>
 
@@ -255,29 +268,29 @@ td code{font-size:.82em}
   <p class="toc-title">Contents</p>
   <ol>
     <li class="toc-part">One &middot; The words</li>
-    <li><a href="#s1"><span class="toc-num">01</span>AI, ML &amp; data science</a></li>
+    <li><a href="#s1"><span class="toc-num">01</span>AI, ML and data science</a></li>
     <li><a href="#s2"><span class="toc-num">02</span>What an LLM does</a></li>
-    <li><a href="#s3"><span class="toc-num">03</span>Tokens &amp; context</a></li>
-    <li><a href="#s4"><span class="toc-num">04</span>Prompts</a></li>
-    <li><a href="#s5"><span class="toc-num">05</span>Hallucination</a></li>
+    <li><a href="#s3"><span class="toc-num">03</span>Claude's memory</a></li>
+    <li><a href="#s4"><span class="toc-num">04</span>How to ask well</a></li>
+    <li><a href="#s5"><span class="toc-num">05</span>When Claude is wrong</a></li>
     <li class="toc-part">Two &middot; Claude Code</li>
     <li><a href="#s6"><span class="toc-num">06</span>Claude vs Claude Code</a></li>
-    <li><a href="#s7"><span class="toc-num">07</span>The agent loop</a></li>
+    <li><a href="#s7"><span class="toc-num">07</span>What an agent is</a></li>
     <li><a href="#s8"><span class="toc-num">08</span>Tools</a></li>
-    <li class="toc-part">Three &middot; Many agents</li>
-    <li><a href="#s9"><span class="toc-num">09</span>Subagents &amp; subteams</a></li>
+    <li class="toc-part">Three &middot; Many helpers</li>
+    <li><a href="#s9"><span class="toc-num">09</span>Subagents</a></li>
     <li><a href="#s10"><span class="toc-num">10</span>Automation</a></li>
     <li class="toc-part">Four &middot; Your project</li>
-    <li><a href="#s11"><span class="toc-num">11</span>The map</a></li>
-    <li><a href="#s12"><span class="toc-num">12</span>Three levels of instruction</a></li>
-    <li><a href="#s13"><span class="toc-num">13</span>The workflow, phase by phase</a></li>
-    <li><a href="#s14"><span class="toc-num">14</span>What actually happened</a></li>
-    <li class="toc-part">Five &middot; The rest</li>
-    <li><a href="#s15"><span class="toc-num">15</span>Permissions &amp; safety</a></li>
-    <li><a href="#s16"><span class="toc-num">16</span>What it costs</a></li>
-    <li><a href="#s17"><span class="toc-num">17</span>MCP &amp; Git</a></li>
-    <li><a href="#s18"><span class="toc-num">18</span>When not to use an agent</a></li>
-    <li><a href="#s19"><span class="toc-num">19</span>Glossary &amp; practice</a></li>
+    <li><a href="#s11"><span class="toc-num">11</span>Your folders</a></li>
+    <li><a href="#s12"><span class="toc-num">12</span>Three kinds of rules</a></li>
+    <li><a href="#s13"><span class="toc-num">13</span>Your 5 steps</a></li>
+    <li><a href="#s14"><span class="toc-num">14</span>What you did</a></li>
+    <li class="toc-part">Five &middot; Other things</li>
+    <li><a href="#s15"><span class="toc-num">15</span>Staying safe</a></li>
+    <li><a href="#s16"><span class="toc-num">16</span>The cost</a></li>
+    <li><a href="#s17"><span class="toc-num">17</span>MCP and Git</a></li>
+    <li><a href="#s18"><span class="toc-num">18</span>When not to use it</a></li>
+    <li><a href="#s19"><span class="toc-num">19</span>Word list &amp; practice</a></li>
   </ol>
 </nav>
 
@@ -285,68 +298,76 @@ td code{font-size:.82em}
 
 <div class="part">
   <span class="part-num">Part One</span>
-  <h2>The words, decoded</h2>
-  <p>Five ideas. Everything later is built out of these.</p>
+  <h2>The words</h2>
+  <p>Five ideas. Everything later is built from these five.</p>
 </div>
 
 <section id="s1">
-<h3><span class="sec-num">01</span>AI, machine learning, data science &mdash; who's who</h3>
+<h3><span class="sec-num">01</span>AI, machine learning and data science</h3>
 
-<p class="oneline"><span>In one line</span>These are not synonyms. They sit inside each other like Russian dolls &mdash; and Claude sits in the smallest one.</p>
+<p class="oneline"><span>Short answer</span>These words are not the same thing. They sit inside each other, like small boxes inside bigger boxes.</p>
 
 <figure>
 <div class="fig-frame">
-<svg viewBox="0 0 660 290" role="img" aria-label="Nested boxes: Artificial Intelligence contains Machine Learning, which contains Deep Learning, which contains Large Language Models, of which Claude is one. Data Science sits alongside, sharing tools with Machine Learning.">
+<svg viewBox="0 0 660 290" role="img" aria-label="Boxes inside boxes. The biggest box is Artificial Intelligence. Inside it is Machine Learning. Inside that is Deep Learning. Inside that is Large Language Models. Claude is one of those. Data Science sits to the side and shares the same maths.">
   <rect class="svg-box" x="10" y="10" width="430" height="256" rx="4"/>
-  <text class="svg-lab" x="24" y="32">ARTIFICIAL INTELLIGENCE</text>
+  <text class="svg-lab" x="24" y="32">1. ARTIFICIAL INTELLIGENCE (AI)</text>
   <rect class="svg-box-2" x="34" y="48" width="382" height="204" rx="3"/>
-  <text class="svg-lab" x="48" y="70">MACHINE LEARNING</text>
+  <text class="svg-lab" x="48" y="70">2. MACHINE LEARNING</text>
   <rect class="svg-box-2" x="58" y="86" width="334" height="152" rx="3"/>
-  <text class="svg-lab" x="72" y="108">DEEP LEARNING</text>
+  <text class="svg-lab" x="72" y="108">3. DEEP LEARNING</text>
   <rect class="svg-box-2" x="82" y="124" width="286" height="100" rx="3"/>
-  <text class="svg-lab" x="96" y="146">LARGE LANGUAGE MODELS</text>
+  <text class="svg-lab" x="96" y="146">4. LARGE LANGUAGE MODELS</text>
   <rect class="svg-hi" x="106" y="162" width="238" height="46" rx="3"/>
-  <text class="svg-t" x="225" y="191" text-anchor="middle">Claude is one of these</text>
+  <text class="svg-t" x="225" y="191" text-anchor="middle">5. Claude is one of these</text>
 
   <rect class="svg-ghost" x="482" y="90" width="164" height="104" rx="4"/>
   <text class="svg-lab" x="496" y="114">DATA SCIENCE</text>
-  <text class="svg-t-sm" x="496" y="136">Getting answers</text>
-  <text class="svg-t-sm" x="496" y="153">out of data. Same</text>
-  <text class="svg-t-sm" x="496" y="170">maths, different job.</text>
+  <text class="svg-t-sm" x="496" y="136">A job, not a machine.</text>
+  <text class="svg-t-sm" x="496" y="153">Finding answers</text>
+  <text class="svg-t-sm" x="496" y="170">inside data.</text>
   <path class="svg-line-dash" d="M482 142 L440 142"/>
-  <text class="svg-cap" x="461" y="132" text-anchor="middle">SHARES TOOLS</text>
+  <text class="svg-cap" x="461" y="132" text-anchor="middle">SAME MATHS</text>
 </svg>
 </div>
-<figcaption>Each label is narrower than the one outside it. &ldquo;AI&rdquo; is the whole field; Claude is one specific product at the very centre.</figcaption>
+<figcaption>Box 1 is the biggest idea. Box 5 is the smallest. Claude sits in the middle of all of them.</figcaption>
 </figure>
 
 <ul>
-<li><strong>Artificial Intelligence (AI)</strong> &mdash; the broad goal: get computers to do things that normally need a human brain. A chess program from 1985 is AI.</li>
-<li><strong>Machine Learning (ML)</strong> &mdash; one way to get there. Instead of writing the rules yourself, you show the computer thousands of examples and it works the rules out. Your spam filter is ML.</li>
-<li><strong>Deep Learning</strong> &mdash; ML done with <em>neural networks</em>: huge stacks of simple maths, tuned by trial and error until they get the examples right. &ldquo;Deep&rdquo; just means many layers stacked.</li>
-<li><strong>Large Language Model (LLM)</strong> &mdash; deep learning pointed at <em>text</em>, trained on an enormous amount of writing. Claude, ChatGPT and Gemini are LLMs.</li>
-<li><strong>Data science</strong> &mdash; a <em>job</em>, not a technology: taking messy real-world data and pulling a trustworthy answer out of it. It overlaps with ML, but a data scientist spends most of their time cleaning data and checking whether a result is real.</li>
+<li><strong>AI (Artificial Intelligence)</strong> &mdash; making a computer do things that normally need a human brain. <em>Example: a computer that plays chess.</em></li>
+<li><strong>Machine learning</strong> &mdash; one way to build AI. You do not write the rules. You show the computer many examples, and it finds the rules by itself. <em>Example: you show it 10,000 emails. Some are marked "spam". Some are marked "not spam". After a while it can spot spam on its own.</em></li>
+<li><strong>Deep learning</strong> &mdash; machine learning done with a "neural network". A neural network is a big pile of simple maths, stacked in layers. "Deep" just means <em>many layers</em>.</li>
+<li><strong>LLM (Large Language Model)</strong> &mdash; deep learning used on <em>text</em>. It has read a huge amount of writing. Claude is an LLM. So is ChatGPT.</li>
+<li><strong>Data science</strong> &mdash; this one is a <strong>job</strong>, not a machine. A person takes messy data and finds a true answer inside it. They spend most of their time cleaning the data and checking if the answer is real.</li>
 </ul>
 
 <div class="note">
-<span class="note-label">The analogy</span>
-<p>AI is <em>&ldquo;transport&rdquo;</em>. Machine learning is <em>&ldquo;engines&rdquo;</em>. Deep learning is <em>&ldquo;jet engines&rdquo;</em>. An LLM is <em>&ldquo;a passenger jet&rdquo;</em>. Claude is <em>&ldquo;this specific aircraft&rdquo;</em>. Data science is <em>&ldquo;the person reading the flight data to decide whether the route was worth flying&rdquo;</em>.</p>
+<span class="note-label">An easy way to remember</span>
+<p>Think about travel:</p>
+<ul>
+<li>AI = <em>"travel"</em> (the big idea)</li>
+<li>Machine learning = <em>"engines"</em></li>
+<li>Deep learning = <em>"jet engines"</em></li>
+<li>LLM = <em>"a passenger plane"</em></li>
+<li>Claude = <em>"this one plane"</em></li>
+<li>Data science = <em>"the person who checks if the trip was worth it"</em></li>
+</ul>
 </div>
 
 <div class="here">
 <span class="here-label">In your project</span>
-<p>You are not doing machine learning or data science here. You are <em>using</em> a finished LLM. Nothing in this repo trains anything &mdash; it all just gives an already-trained model better instructions.</p>
+<p>You are <strong>not</strong> doing machine learning here. You are not teaching a computer anything. Claude is already trained. You are only giving it better instructions.</p>
 </div>
 </section>
 
 <section id="s2">
-<h3><span class="sec-num">02</span>What an LLM actually does</h3>
+<h3><span class="sec-num">02</span>What an LLM really does</h3>
 
-<p class="oneline"><span>In one line</span>It predicts the next chunk of text, over and over, very fast. That is the whole trick.</p>
+<p class="oneline"><span>Short answer</span>It guesses the next small piece of text. Then it guesses again. And again. Very fast. That is all it does.</p>
 
 <figure>
 <div class="fig-frame">
-<svg viewBox="0 0 860 190" role="img" aria-label="Flow: your text is split into tokens, tokens run through the model, the model scores every possible next token and picks the likeliest, and that new token is glued onto the end so the whole process repeats.">
+<svg viewBox="0 0 860 190" role="img" aria-label="Your text is cut into small pieces called tokens. The tokens go into the model. The model gives a score to every possible next word and picks the best one. That new word is added to the end, and the whole thing runs again.">
   <defs>
     <marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path class="svg-arrowhead" d="M 0 0 L 10 5 L 0 10 z"/>
@@ -357,18 +378,18 @@ td code{font-size:.82em}
   </defs>
   <rect class="svg-box" x="8" y="30" width="140" height="58" rx="4"/>
   <text class="svg-t" x="78" y="55" text-anchor="middle">Your text</text>
-  <text class="svg-t-sm" x="78" y="73" text-anchor="middle">&ldquo;research the...&rdquo;</text>
+  <text class="svg-t-sm" x="78" y="73" text-anchor="middle">&ldquo;The sky is&rdquo;</text>
 
   <line class="svg-line" x1="148" y1="59" x2="230" y2="59" marker-end="url(#ar1)"/>
-  <text class="svg-cap" x="189" y="80" text-anchor="middle">CHOPPED</text>
-  <text class="svg-cap" x="189" y="93" text-anchor="middle">INTO PIECES</text>
+  <text class="svg-cap" x="189" y="80" text-anchor="middle">CUT INTO</text>
+  <text class="svg-cap" x="189" y="93" text-anchor="middle">SMALL PIECES</text>
 
   <rect class="svg-box" x="238" y="30" width="140" height="58" rx="4"/>
   <text class="svg-t" x="308" y="55" text-anchor="middle">Tokens</text>
-  <text class="svg-t-sm" x="308" y="73" text-anchor="middle">re &middot; search &middot; the</text>
+  <text class="svg-t-sm" x="308" y="73" text-anchor="middle">The &middot; sky &middot; is</text>
 
   <line class="svg-line" x1="378" y1="59" x2="460" y2="59" marker-end="url(#ar1)"/>
-  <text class="svg-cap" x="419" y="80" text-anchor="middle">FED INTO</text>
+  <text class="svg-cap" x="419" y="80" text-anchor="middle">GO INTO</text>
   <text class="svg-cap" x="419" y="93" text-anchor="middle">THE MODEL</text>
 
   <rect class="svg-box" x="468" y="30" width="140" height="58" rx="4"/>
@@ -377,40 +398,52 @@ td code{font-size:.82em}
 
   <line class="svg-line-hi" x1="608" y1="59" x2="690" y2="59" marker-end="url(#ar1h)"/>
   <text class="svg-cap" x="649" y="80" text-anchor="middle">PICKS THE</text>
-  <text class="svg-cap" x="649" y="93" text-anchor="middle">LIKELIEST</text>
+  <text class="svg-cap" x="649" y="93" text-anchor="middle">BEST ONE</text>
 
   <rect class="svg-hi" x="698" y="30" width="140" height="58" rx="4"/>
-  <text class="svg-t" x="768" y="55" text-anchor="middle">One new token</text>
-  <text class="svg-t-sm" x="768" y="73" text-anchor="middle">&ldquo; market&rdquo;</text>
+  <text class="svg-t" x="768" y="55" text-anchor="middle">One new word</text>
+  <text class="svg-t-sm" x="768" y="73" text-anchor="middle">&ldquo; blue&rdquo;</text>
 
   <path class="svg-line-hi" d="M768 88 L768 140 L308 140 L308 92" marker-end="url(#ar1h)"/>
-  <text class="svg-lab-hi" x="538" y="162" text-anchor="middle">glued onto the end &mdash; then the whole thing runs again for the next word</text>
+  <text class="svg-lab-hi" x="538" y="162" text-anchor="middle">the new word is added to the end &mdash; then it all runs again for the next word</text>
 </svg>
 </div>
-<figcaption>An LLM writes one token at a time. There is no plan for the paragraph &mdash; only a very well-informed guess at what comes next, repeated.</figcaption>
+<figcaption>Claude writes one small piece at a time. It has no plan for the full paragraph. It only picks the best next piece, again and again.</figcaption>
 </figure>
 
+<div class="eg">
+<span class="eg-label">Example</span>
+<p>You type: <strong>"The capital of France is"</strong></p>
+<p>The model looks at every word it could put next. It gives each one a score:</p>
 <ul>
-<li>A <strong>token</strong> is roughly 3&ndash;4 characters &mdash; a short word, or a piece of a long one. <code>understanding</code> might be <code>under</code> + <code>stand</code> + <code>ing</code>.</li>
-<li>In training, the model read a colossal amount of text with the next word hidden, guessed it, and got nudged when it was wrong. Trillions of times.</li>
-<li>What survives that process is not a database of facts. It is a compressed sense of <em>how language and ideas fit together</em>.</li>
-<li>That is why it can write about a topic it has never seen the exact words for &mdash; and also why it can state something false with total confidence.</li>
+<li><code>Paris</code> &mdash; very high score</li>
+<li><code>Lyon</code> &mdash; low score</li>
+<li><code>banana</code> &mdash; almost zero</li>
+</ul>
+<p>It picks <code>Paris</code>. Then it starts again to find the word after that.</p>
+</div>
+
+<ul>
+<li>A <strong>token</strong> is a small piece of text. About 3 or 4 letters. Sometimes a full short word.<br><em>Example: the word</em> <code>understanding</code> <em>may be cut into</em> <code>under</code> + <code>stand</code> + <code>ing</code>.</li>
+<li>How it learned: it read a huge amount of text with one word hidden. It had to guess the hidden word. When it was wrong, it was corrected. This happened many, many times.</li>
+<li><strong>Important:</strong> it did not save a list of facts. It learned <em>patterns</em> in language.</li>
+<li>This is why it can write about almost anything. And it is also why it can be wrong but still sound very sure.</li>
 </ul>
 
 <div class="note">
-<span class="note-label">Why this matters to you</span>
-<p>Everything else in this handbook &mdash; citations, source rules, approval gates, subagents &mdash; exists to work <em>around</em> the fact that the thing underneath is a very good guesser, not a fact database.</p>
+<span class="note-label">Why this matters</span>
+<p>Everything else in this guide &mdash; sources, links, checks, questions &mdash; is there for one reason. The machine underneath is a very good guesser. It is not a book of facts.</p>
 </div>
 </section>
 
 <section id="s3">
-<h3><span class="sec-num">03</span>Tokens, context, and why Claude &ldquo;forgets&rdquo;</h3>
+<h3><span class="sec-num">03</span>Claude's memory (and why it forgets)</h3>
 
-<p class="oneline"><span>In one line</span>Claude has no memory between sessions. It only knows what is currently in front of it &mdash; and that space has a limit.</p>
+<p class="oneline"><span>Short answer</span>Claude only knows what is in front of it right now. When you close it, everything is gone.</p>
 
 <figure>
 <div class="fig-frame">
-<svg viewBox="0 0 660 300" role="img" aria-label="A context window box containing five stacked layers: built-in system rules, your CLAUDE.md project rules, the conversation so far, files read and tool results, and your latest message. Notes to the right explain that when it fills up the oldest parts are summarised, and when you close the session the whole window is gone.">
+<svg viewBox="0 0 660 300" role="img" aria-label="A box called the context window holds five layers: built-in rules, your CLAUDE.md rules, the chat so far, files and results, and your newest message. Notes on the right say that when the box is full, old parts become a short summary, and when you close the session, everything is gone except files that load again from your disk.">
   <defs>
     <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path class="svg-arrowhead" d="M 0 0 L 10 5 L 0 10 z"/>
@@ -419,101 +452,131 @@ td code{font-size:.82em}
       <path class="svg-arrowhead-hi" d="M 0 0 L 10 5 L 0 10 z"/>
     </marker>
   </defs>
-  <text class="svg-lab" x="20" y="22">THE CONTEXT WINDOW &mdash; EVERYTHING CLAUDE CAN SEE RIGHT NOW</text>
+  <text class="svg-lab" x="20" y="22">EVERYTHING CLAUDE CAN SEE RIGHT NOW</text>
   <rect class="svg-box" x="20" y="32" width="316" height="244" rx="4"/>
 
   <rect class="svg-box-2" x="34" y="46" width="288" height="40" rx="3"/>
-  <text class="svg-t-sm" x="48" y="71">Built-in system rules</text>
+  <text class="svg-t-sm" x="48" y="71">Built-in rules</text>
   <rect class="svg-hi" x="34" y="92" width="288" height="40" rx="3"/>
-  <text class="svg-t-sm" x="48" y="117">Your CLAUDE.md project rules</text>
+  <text class="svg-t-sm" x="48" y="117">Your CLAUDE.md rules</text>
   <rect class="svg-box-2" x="34" y="138" width="288" height="40" rx="3"/>
-  <text class="svg-t-sm" x="48" y="163">The conversation so far</text>
+  <text class="svg-t-sm" x="48" y="163">The chat so far</text>
   <rect class="svg-box-2" x="34" y="184" width="288" height="40" rx="3"/>
-  <text class="svg-t-sm" x="48" y="209">Files read + tool results</text>
+  <text class="svg-t-sm" x="48" y="209">Files and web pages it opened</text>
   <rect class="svg-box-2" x="34" y="230" width="288" height="34" rx="3"/>
-  <text class="svg-t-sm" x="48" y="252">Your latest message</text>
+  <text class="svg-t-sm" x="48" y="252">Your newest message</text>
 
   <path class="svg-line-dash" d="M336 154 L392 154" marker-end="url(#ar2)"/>
 
-  <text class="svg-lab" x="404" y="60">WHEN IT FILLS UP</text>
-  <text class="svg-t-sm" x="404" y="84">The oldest parts get squeezed</text>
-  <text class="svg-t-sm" x="404" y="102">into a summary to make room.</text>
-  <text class="svg-t-sm" x="404" y="120">Detail is lost, not the thread.</text>
+  <text class="svg-lab" x="404" y="60">WHEN THE BOX IS FULL</text>
+  <text class="svg-t-sm" x="404" y="84">The oldest parts are turned</text>
+  <text class="svg-t-sm" x="404" y="102">into a short summary.</text>
+  <text class="svg-t-sm" x="404" y="120">Small details are lost.</text>
   <text class="svg-lab" x="404" y="162">WHEN YOU CLOSE IT</text>
-  <text class="svg-t-sm" x="404" y="186">The whole window is gone.</text>
-  <text class="svg-t-sm" x="404" y="204">The next session starts empty,</text>
-  <text class="svg-t-sm" x="404" y="222">except the parts that reload</text>
-  <text class="svg-t-sm" x="404" y="240">from disk &mdash; like CLAUDE.md.</text>
+  <text class="svg-t-sm" x="404" y="186">Everything in the box is gone.</text>
+  <text class="svg-t-sm" x="404" y="204">Next time it starts empty.</text>
+  <text class="svg-t-sm" x="404" y="222">Only files on your computer</text>
+  <text class="svg-t-sm" x="404" y="240">load again &mdash; like CLAUDE.md.</text>
 </svg>
 </div>
-<figcaption>Highlighted: your <code>CLAUDE.md</code> is re-injected at the start of every session. That is why rules written there stick, and things you merely said out loud in chat do not.</figcaption>
+<figcaption>The blue row is your <code>CLAUDE.md</code> file. It loads again every time. That is why rules in that file keep working.</figcaption>
 </figure>
 
+<p>The name for this box is the <strong>context window</strong>.</p>
+
+<div class="eg">
+<span class="eg-label">Think of a desk</span>
+<p>Claude's memory is like a desk. You can put many papers on it. But the desk has a size. When it is full, old papers must go, and a short note is left in their place.</p>
+<p>And at the end of the day, the desk is cleared completely. Nothing stays.</p>
+</div>
+
 <ul>
-<li>The <strong>context window</strong> is Claude's short-term working memory, measured in tokens. Large &mdash; hundreds of thousands of tokens &mdash; but finite.</li>
-<li>Everything competes for the space: your rules, the chat, every file opened, every web page fetched.</li>
-<li>Close the terminal and it is wiped. Claude does not remember yesterday unless something on disk reloads it.</li>
+<li>Everything takes space on the desk: your rules, the chat, every file it opens, every web page it reads.</li>
+<li>Claude does <strong>not</strong> remember yesterday. It cannot. The desk was cleared.</li>
+<li>The only way something comes back is if it is saved in a file on your computer.</li>
 </ul>
 
 <div class="here">
 <span class="here-label">In your project</span>
-<p>This is the entire reason <code>CLAUDE.md</code> exists. Your rules &mdash; <em>bullets over paragraphs, cite sources, save to /output</em> &mdash; live in a file so they reload every single session, instead of you retyping them.</p>
+<p>This is the whole reason <code>CLAUDE.md</code> exists.</p>
+<p>Your rules &mdash; <em>use bullet points, add sources, save to the /output folder</em> &mdash; are written in a file. So they come back every single time. If you only <em>said</em> them in chat, they would be gone tomorrow.</p>
 </div>
 </section>
 
 <section id="s4">
-<h3><span class="sec-num">04</span>Prompts &mdash; the only real control you have</h3>
+<h3><span class="sec-num">04</span>How to ask well</h3>
 
-<p class="oneline"><span>In one line</span>A prompt is your instruction. You cannot reprogram the model, so how you word things <em>is</em> the programming.</p>
+<p class="oneline"><span>Short answer</span>What you type is called a prompt. You cannot change how Claude thinks. So <em>how you ask</em> is your main control.</p>
 
+<div class="eg">
+<span class="eg-label">Weak ask vs strong ask</span>
+<p class="bad"><strong>Weak:</strong> "Write about AI agents."</p>
+<p>You will get something long, general and boring.</p>
+<p><strong>Strong:</strong> "Write 800 words about AI agents. My readers have never used one. No difficult words. Add a link for every fact."</p>
+<p>Now Claude knows the length, the reader, the style and the rule. The answer will be much better.</p>
+</div>
+
+<h4>Four simple rules</h4>
 <ul>
-<li><strong>Vague in, vague out.</strong> &ldquo;Write about AI agents&rdquo; gives you mush. &ldquo;800 words, jargon-free, for people who have never used one, with sources&rdquo; gives you something usable.</li>
-<li><strong>Give it a role and an audience.</strong> Your <code>CLAUDE.md</code> says <em>&ldquo;My audience wants practical, jargon-free output&rdquo;</em>. That one sentence changes every answer it writes.</li>
-<li><strong>Show the shape you want.</strong> The markdown template in your workflow file is a prompt technique &mdash; instead of describing the report, you hand over the skeleton.</li>
-<li><strong>Break big jobs into steps.</strong> One huge ask produces worse work than five smaller ones in order. Your workflow's five phases are exactly this.</li>
+<li><strong>Say who will read it.</strong> Your <code>CLAUDE.md</code> already says your readers want simple, useful writing. That one line changes every answer.</li>
+<li><strong>Say how long.</strong> "500 words" works. "Short" does not.</li>
+<li><strong>Show the shape you want.</strong> Give it the headings. Your workflow file does this &mdash; it gives Claude an empty report to fill in.</li>
+<li><strong>Cut a big job into steps.</strong> One huge request gives a poor result. Five small steps in order gives a good one. This is exactly what your 5 phases do.</li>
 </ul>
 
-<p><strong>Prompt engineering</strong> is just the name for doing the above deliberately. It is not a secret language &mdash; it is clear writing, plus knowing what the model tends to get wrong.</p>
+<p>People call this <strong>prompt engineering</strong>. It sounds difficult, but it is not. It only means: write clearly, and say what you want.</p>
 </section>
 
 <section id="s5">
-<h3><span class="sec-num">05</span>Hallucination &mdash; the flaw that shapes everything</h3>
+<h3><span class="sec-num">05</span>When Claude is wrong</h3>
 
-<p class="oneline"><span>In one line</span>When an LLM does not know, it does not go quiet. It produces something plausible, confidently.</p>
+<p class="oneline"><span>Short answer</span>Sometimes Claude does not know something. It will not say "I don't know". It will make something up that sounds correct.</p>
 
+<p>The name for this is <strong>hallucination</strong>.</p>
+
+<div class="eg">
+<span class="eg-label">Example</span>
+<p>You ask: "Which study proved this?"</p>
+<p>Claude may answer: <em>"A 2024 study by Dr. Sharma at Oxford found that 62% of..."</em></p>
+<p>It looks real. The name looks real. The number looks real. But the study may not exist at all.</p>
+<p>Why? Look at part 02. Claude picks the <em>most likely</em> next words. A fake study title looks very much like a real study title.</p>
+</div>
+
+<p>It happens more often when:</p>
 <ul>
-<li>Remember section 02: it predicts likely text. A fake-but-plausible citation is <em>very</em> likely-looking text.</li>
-<li>Invented statistics. Real authors on papers they never wrote. Dead URLs. Dates that are close but wrong.</li>
-<li>It gets worse the more obscure, the more recent, or the more numeric the question.</li>
+<li>the topic is not well known</li>
+<li>the news is very recent</li>
+<li>the answer has numbers, dates or names in it</li>
 </ul>
 
-<h4>The three defences &mdash; all three are already in your project</h4>
+<h4>Three ways to stop it &mdash; all three are in your project</h4>
 <ol class="steps">
-<li><strong>Make it look things up.</strong> A fetched web page is evidence; a memory is a guess. Your workflow says <em>do not build the report out of search snippets</em> &mdash; open the actual sources.</li>
-<li><strong>Make it show its work.</strong> Every claim carries an inline link, and the report ends with a numbered source list. If a link cannot be produced, the claim is suspect.</li>
-<li><strong>Make it flag its own weak spots.</strong> Your corroboration rule &mdash; two independent sources for anything surprising or numerical, otherwise tag it <code>(single-sourced)</code> &mdash; plus Phase 5, where it has to tell you what is thin.</li>
+<li><strong>Make it read the real page.</strong> A page it actually opened is proof. A memory is only a guess. Your workflow says: do not use short search results, open the real source.</li>
+<li><strong>Make it show the link.</strong> Every fact needs a link next to it. The report ends with a numbered list of sources. If it cannot give you a link, do not trust the fact.</li>
+<li><strong>Make it point at its own weak parts.</strong> Your rule says: any surprising number needs <em>two</em> different sources. If there is only one, write <code>(single-sourced)</code> next to it. And in step 5, Claude must tell you which parts are weak.</li>
 </ol>
 
 <div class="note">
 <span class="note-label">The habit to build</span>
-<p>Treat an agent like a fast, well-read intern who never says &ldquo;I don't know&rdquo;. Brilliant at gathering and drafting. Never the final word on a fact. <strong>Click the links.</strong></p>
+<p>Think of Claude as a fast helper who has read a lot &mdash; but who never says "I don't know".</p>
+<p>Great for finding things and writing a first draft. Never the final word on a fact. <strong>Always click the links.</strong></p>
 </div>
 </section>
 
 <div class="part">
   <span class="part-num">Part Two</span>
-  <h2>Claude, Claude Code, and what makes it an agent</h2>
-  <p>The jump from &ldquo;a chatbot that talks&rdquo; to &ldquo;a thing that does work&rdquo;.</p>
+  <h2>Claude, Claude Code, and agents</h2>
+  <p>The change from "a chatbot that talks" to "a helper that does work".</p>
 </div>
 
 <section id="s6">
-<h3><span class="sec-num">06</span>Claude vs Claude Code &mdash; same brain, different arms</h3>
+<h3><span class="sec-num">06</span>Claude vs Claude Code</h3>
 
-<p class="oneline"><span>In one line</span>Claude is the model. Claude Code is a program that wraps that model and hands it real tools &mdash; your files, your terminal, the live web.</p>
+<p class="oneline"><span>Short answer</span>Claude is the brain. Claude Code is a program that gives that brain hands &mdash; so it can open your files, save files, and search the web.</p>
 
 <figure>
 <div class="fig-frame">
-<svg viewBox="0 0 740 300" role="img" aria-label="Side by side comparison. On the left, Claude in a browser: you and Claude exchange messages, and your computer sits below with no connection to Claude. On the right, Claude Code: you and Claude exchange messages, and Claude also has a live two-way connection down to your computer, which holds your files, your terminal and the web.">
+<svg viewBox="0 0 740 300" role="img" aria-label="Two sides. On the left, Claude in a browser: you and Claude send text to each other, but there is no line from Claude to your computer. On the right, Claude Code: you and Claude send text, and there is also a two-way line from Claude down to your computer, which holds your files, your terminal and the web.">
   <defs>
     <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path class="svg-arrowhead" d="M 0 0 L 10 5 L 0 10 z"/>
@@ -529,12 +592,12 @@ td code{font-size:.82em}
   <rect class="svg-box" x="212" y="60" width="100" height="42" rx="4"/>
   <text class="svg-t" x="262" y="86" text-anchor="middle">Claude</text>
   <line class="svg-line" x1="140" y1="81" x2="204" y2="81" marker-start="url(#ar3)" marker-end="url(#ar3)"/>
-  <text class="svg-cap" x="172" y="70" text-anchor="middle">TEXT</text>
+  <text class="svg-cap" x="172" y="70" text-anchor="middle">TEXT ONLY</text>
 
   <rect class="svg-ghost" x="42" y="176" width="270" height="76" rx="4"/>
   <text class="svg-lab" x="58" y="200">YOUR COMPUTER</text>
-  <text class="svg-t-sm" x="58" y="224">Files, terminal, projects.</text>
-  <text class="svg-t-sm" x="58" y="242">Claude cannot reach any of it.</text>
+  <text class="svg-t-sm" x="58" y="224">Your files and folders.</text>
+  <text class="svg-t-sm" x="58" y="242">Claude cannot touch them.</text>
   <path class="svg-line-dash" d="M262 102 L262 176"/>
   <line x1="252" y1="128" x2="272" y2="148" stroke="var(--ink-faint)" stroke-width="2"/>
   <line x1="272" y1="128" x2="252" y2="148" stroke="var(--ink-faint)" stroke-width="2"/>
@@ -553,43 +616,45 @@ td code{font-size:.82em}
   <rect class="svg-box" x="448" y="212" width="76" height="28" rx="3"/>
   <text class="svg-t-sm" x="486" y="231" text-anchor="middle">files</text>
   <rect class="svg-box" x="534" y="212" width="76" height="28" rx="3"/>
-  <text class="svg-t-sm" x="572" y="231" text-anchor="middle">terminal</text>
+  <text class="svg-t-sm" x="572" y="231" text-anchor="middle">commands</text>
   <rect class="svg-box" x="620" y="212" width="66" height="28" rx="3"/>
   <text class="svg-t-sm" x="653" y="231" text-anchor="middle">the web</text>
   <line class="svg-line-hi" x1="652" y1="102" x2="652" y2="170" marker-start="url(#ar3h)" marker-end="url(#ar3h)"/>
-  <text class="svg-lab-hi" x="664" y="142">reads &amp; writes</text>
+  <text class="svg-lab-hi" x="664" y="142">opens and saves</text>
 </svg>
 </div>
-<figcaption>The difference is one arrow. Browser Claude can only describe a file it will never see; Claude Code opens it, edits it and saves it.</figcaption>
+<figcaption>There is only one difference: the blue line. Browser Claude can talk about a file. Claude Code can open it, change it and save it.</figcaption>
 </figure>
 
-<div class="table-wrap">
-<table>
-<thead><tr><th>Name</th><th>What it is</th><th>Where you meet it</th></tr></thead>
-<tbody>
-<tr><td>Anthropic</td><td>The company that builds Claude.</td><td>The bill, the docs.</td></tr>
-<tr><td>Claude</td><td>The model &mdash; the trained brain itself. Comes in sizes: Opus (most capable), Sonnet (balanced), Haiku (fastest).</td><td>Inside every product below.</td></tr>
-<tr><td>Claude.ai</td><td>The chat website and app.</td><td>Browser, phone.</td></tr>
-<tr><td>Claude Code</td><td>The tool you are using here. Runs on your machine, reads and writes real files, runs real commands.</td><td>Terminal, VS Code, desktop app.</td></tr>
-<tr><td>Claude API</td><td>The plumbing for developers who want Claude inside their own software.</td><td>Code you would write yourself.</td></tr>
-</tbody>
-</table>
+<div class="eg">
+<span class="eg-label">Example</span>
+<p><strong>In a browser:</strong> Claude writes your report in the chat. You must copy it, open a text editor, paste it, and save it yourself.</p>
+<p><strong>In Claude Code:</strong> Claude saves the file itself. That is how <code>output/state-of-ai-agents-2026.md</code> appeared on your computer.</p>
 </div>
 
-<div class="here">
-<span class="here-label">In your project</span>
-<p>Your whole workspace only makes sense with Claude Code. <code>output/state-of-ai-agents-2026.md</code> exists on your disk because Claude Code was allowed to create it. Browser Claude could have drafted the text, but you would have had to copy, paste and save it yourself.</p>
+<h4>The names you will see</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Name</th><th>What it is</th><th>Where you see it</th></tr></thead>
+<tbody>
+<tr><td>Anthropic</td><td>The company that makes Claude.</td><td>The bill. The website.</td></tr>
+<tr><td>Claude</td><td>The brain. It comes in sizes. Opus is the smartest. Sonnet is in the middle. Haiku is the fastest and cheapest.</td><td>Inside all the products below.</td></tr>
+<tr><td>Claude.ai</td><td>The chat website and phone app.</td><td>Your browser.</td></tr>
+<tr><td>Claude Code</td><td>What you are using. It runs on your computer and can open and save real files.</td><td>Terminal, VS Code.</td></tr>
+<tr><td>Claude API</td><td>A way for programmers to put Claude inside their own app.</td><td>Only if you write software.</td></tr>
+</tbody>
+</table>
 </div>
 </section>
 
 <section id="s7">
-<h3><span class="sec-num">07</span>The agent loop &mdash; what makes it an <em>agent</em></h3>
+<h3><span class="sec-num">07</span>What an agent is</h3>
 
-<p class="oneline"><span>In one line</span>A chatbot answers in one shot. An agent takes an action, looks at what came back, and decides what to do next &mdash; over and over &mdash; until the job is done.</p>
+<p class="oneline"><span>Short answer</span>A chatbot answers once and stops. An agent does something, looks at the result, then decides the next step. It repeats this until the job is finished.</p>
 
 <figure>
 <div class="fig-frame">
-<svg viewBox="0 0 780 250" role="img" aria-label="The agent loop. You ask, which feeds into: plan what is needed, then run a tool, then read the result. From reading the result an arrow loops back over the top to planning, labelled still missing something, go again. Another arrow leaves reading the result and returns to a final answer box beside you.">
+<svg viewBox="0 0 780 250" role="img" aria-label="The agent loop. You ask a question. Claude plans what it needs. Claude uses a tool. Claude reads the result. If something is still missing, an arrow goes back over the top to the planning step. If nothing is missing, an arrow goes down and left to the final answer box.">
   <defs>
     <marker id="ar4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path class="svg-arrowhead" d="M 0 0 L 10 5 L 0 10 z"/>
@@ -603,85 +668,87 @@ td code{font-size:.82em}
   <line class="svg-line" x1="86" y1="98" x2="106" y2="98" marker-end="url(#ar4)"/>
 
   <rect class="svg-hi" x="112" y="68" width="180" height="60" rx="4"/>
-  <text class="svg-t" x="202" y="94" text-anchor="middle">Plan what's needed</text>
-  <text class="svg-t-sm" x="202" y="113" text-anchor="middle">&ldquo;I need the actual paper&rdquo;</text>
+  <text class="svg-t" x="202" y="94" text-anchor="middle">1. Plan</text>
+  <text class="svg-t-sm" x="202" y="113" text-anchor="middle">&ldquo;I need that report&rdquo;</text>
 
   <line class="svg-line" x1="292" y1="98" x2="331" y2="98" marker-end="url(#ar4)"/>
-  <text class="svg-cap" x="312" y="120" text-anchor="middle">ACT</text>
+  <text class="svg-cap" x="312" y="120" text-anchor="middle">DO IT</text>
 
   <rect class="svg-hi" x="337" y="68" width="180" height="60" rx="4"/>
-  <text class="svg-t" x="427" y="94" text-anchor="middle">Run a tool</text>
-  <text class="svg-t-sm" x="427" y="113" text-anchor="middle">WebFetch that URL</text>
+  <text class="svg-t" x="427" y="94" text-anchor="middle">2. Use a tool</text>
+  <text class="svg-t-sm" x="427" y="113" text-anchor="middle">open that web page</text>
 
   <line class="svg-line" x1="517" y1="98" x2="556" y2="98" marker-end="url(#ar4)"/>
-  <text class="svg-cap" x="537" y="120" text-anchor="middle">OUTPUT</text>
+  <text class="svg-cap" x="537" y="120" text-anchor="middle">RESULT</text>
 
   <rect class="svg-hi" x="562" y="68" width="180" height="60" rx="4"/>
-  <text class="svg-t" x="652" y="94" text-anchor="middle">Read the result</text>
-  <text class="svg-t-sm" x="652" y="113" text-anchor="middle">&ldquo;paywalled &mdash; try another&rdquo;</text>
+  <text class="svg-t" x="652" y="94" text-anchor="middle">3. Look at it</text>
+  <text class="svg-t-sm" x="652" y="113" text-anchor="middle">&ldquo;page is locked&rdquo;</text>
 
   <path class="svg-line" d="M652 68 L652 30 L202 30 L202 62" marker-end="url(#ar4)"/>
-  <text class="svg-lab" x="427" y="22" text-anchor="middle">still missing something &mdash; go round again</text>
+  <text class="svg-lab" x="427" y="22" text-anchor="middle">something is still missing &mdash; go round again</text>
 
   <path class="svg-line-hi" d="M652 128 L652 210 L266 210" marker-end="url(#ar4h)"/>
-  <text class="svg-lab-hi" x="460" y="200" text-anchor="middle">nothing left to check &mdash; write it up</text>
+  <text class="svg-lab-hi" x="460" y="200" text-anchor="middle">nothing missing &mdash; write the answer</text>
   <rect class="svg-box" x="6" y="186" width="256" height="48" rx="4"/>
-  <text class="svg-t" x="134" y="215" text-anchor="middle">Final answer, back to you</text>
+  <text class="svg-t" x="134" y="215" text-anchor="middle">Answer comes back to you</text>
 </svg>
 </div>
-<figcaption>The loop is the whole idea. One trip round is a chatbot; twenty trips round, unsupervised, is an agent doing your research.</figcaption>
+<figcaption>This circle is the whole idea. Going round once is a chatbot. Going round twenty times, on its own, is an agent.</figcaption>
 </figure>
 
-<p><strong>An agent = a model + tools + a loop + a goal.</strong> Remove any one and it stops being an agent:</p>
-<ul>
-<li>No tools &rarr; it can only talk.</li>
-<li>No loop &rarr; it gets one guess and stops.</li>
-<li>No goal &rarr; it does not know when to stop.</li>
-</ul>
-
-<div class="note">
-<span class="note-label">The analogy</span>
-<p>You send an assistant to the library. A chatbot shouts an answer from the doorway. An agent walks in, checks the catalogue, finds the shelf empty, tries a second library, photocopies four pages, notices two of them contradict each other, goes back for a third source &mdash; <em>then</em> comes back to you.</p>
+<div class="eg">
+<span class="eg-label">Example: sending someone to a library</span>
+<p><strong>A chatbot</strong> stands at the door and shouts an answer from memory.</p>
+<p><strong>An agent</strong> walks in. It checks the catalogue. The shelf is empty. So it tries a second library. It copies four pages. It notices that two pages say different things. So it looks for a third book to check. <em>Then</em> it comes back to you.</p>
 </div>
+
+<p>An agent needs four things:</p>
+<ul>
+<li><strong>A brain</strong> (Claude) &mdash; to decide.</li>
+<li><strong>Tools</strong> &mdash; to actually do things. Without tools it can only talk.</li>
+<li><strong>A loop</strong> &mdash; to try again. Without a loop it gets one guess and stops.</li>
+<li><strong>A goal</strong> &mdash; so it knows when to stop.</li>
+</ul>
 </section>
 
 <section id="s8">
 <h3><span class="sec-num">08</span>Tools &mdash; the agent's hands</h3>
 
-<p class="oneline"><span>In one line</span>A tool is a specific action Claude is allowed to take. The model decides <em>which</em> to use; Claude Code actually runs it.</p>
+<p class="oneline"><span>Short answer</span>A tool is one action Claude is allowed to do. Claude chooses which tool. Claude Code actually runs it.</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr><th>Tool</th><th>What it does</th><th>Used in your workflow for</th></tr></thead>
+<thead><tr><th>Tool</th><th>What it does</th><th>Your workflow uses it to&hellip;</th></tr></thead>
 <tbody>
-<tr><td>WebSearch</td><td>Searches the live web and returns results.</td><td>Phase 3 &mdash; 2&ndash;4 queries per sub-question.</td></tr>
-<tr><td>WebFetch</td><td>Opens a specific page and reads the real content.</td><td>Phase 3 &mdash; reading sources properly, not just snippets.</td></tr>
-<tr><td>Read</td><td>Opens a file on your disk.</td><td>Reading <code>workflow/research-report.md</code> before starting.</td></tr>
-<tr><td>Write / Edit</td><td>Creates or changes a file.</td><td>Phase 4 &mdash; saving the report into <code>/output</code>.</td></tr>
-<tr><td>Bash</td><td>Runs terminal commands.</td><td>Listing folders, checking git history.</td></tr>
-<tr><td>AskUserQuestion</td><td>Stops and asks you a multiple-choice question.</td><td>Phase 1 &mdash; the scoping questions.</td></tr>
-<tr><td>Agent</td><td>Spawns a subagent (section 09).</td><td>Only on <code>depth: deep</code>.</td></tr>
+<tr><td>WebSearch</td><td>Searches the web.</td><td>Find sources. 2 to 4 searches per question.</td></tr>
+<tr><td>WebFetch</td><td>Opens one web page and reads it fully.</td><td>Read the real page, not just the summary.</td></tr>
+<tr><td>Read</td><td>Opens a file on your computer.</td><td>Read your workflow file before starting.</td></tr>
+<tr><td>Write</td><td>Makes or changes a file.</td><td>Save the finished report in <code>/output</code>.</td></tr>
+<tr><td>Bash</td><td>Runs a command in the terminal.</td><td>Look at folders and file names.</td></tr>
+<tr><td>AskUserQuestion</td><td>Stops and asks you a question with options.</td><td>Step 1 &mdash; ask what you actually want.</td></tr>
+<tr><td>Agent</td><td>Creates a helper (see part 09).</td><td>Only when you ask for <code>depth: deep</code>.</td></tr>
 </tbody>
 </table>
 </div>
 
-<p>The model never touches your disk directly. It emits a request &mdash; <em>&ldquo;Write to output/report.md, with this content&rdquo;</em> &mdash; and Claude Code performs it, then feeds the result back into the loop. That gap is where permissions live (section 15).</p>
+<p>One important detail. Claude never touches your files directly. It sends a request, like <em>"please save this text to output/report.md"</em>. Claude Code does the saving. This is the point where <strong>you</strong> can say yes or no (see part 15).</p>
 </section>
 
 <div class="part">
   <span class="part-num">Part Three</span>
-  <h2>One agent, many agents, no agent</h2>
-  <p>Subagents, subteams, and letting things run without you.</p>
+  <h2>Many helpers, and work without you</h2>
+  <p>Subagents, subteams, and jobs that run by themselves.</p>
 </div>
 
 <section id="s9">
-<h3><span class="sec-num">09</span>Subagents and &ldquo;subteams&rdquo;</h3>
+<h3><span class="sec-num">09</span>Subagents and "subteams"</h3>
 
-<p class="oneline"><span>In one line</span>A subagent is a second copy of Claude, sent off with one narrow job and a completely empty memory, which reports back a short summary.</p>
+<p class="oneline"><span>Short answer</span>A subagent is a second Claude. The main Claude creates it, gives it one small job, and gets back a short answer.</p>
 
 <figure>
 <div class="fig-frame">
-<svg viewBox="0 0 700 300" role="img" aria-label="You ask the main agent. The main agent spawns three subagents in parallel, giving each one sub-question and a fresh empty memory. Each subagent reads roughly ten pages of its own. All three return only a short summary to the main agent, which writes the single report.">
+<svg viewBox="0 0 700 300" role="img" aria-label="You send one request to the main agent. The main agent creates three helpers at the same time and gives each one a different question and an empty memory. Each helper reads about ten pages. Each helper sends back only a short answer, not the pages. The main agent then writes one report.">
   <defs>
     <marker id="ar5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path class="svg-arrowhead" d="M 0 0 L 10 5 L 0 10 z"/>
@@ -696,125 +763,141 @@ td code{font-size:.82em}
   <text class="svg-cap" x="177" y="27" text-anchor="middle">ONE REQUEST</text>
 
   <rect class="svg-hi" x="254" y="14" width="200" height="44" rx="4"/>
-  <text class="svg-t" x="354" y="41" text-anchor="middle">Main agent</text>
+  <text class="svg-t" x="354" y="41" text-anchor="middle">Main Claude</text>
 
   <path class="svg-line" d="M354 58 L354 82 L128 82 L128 118" marker-end="url(#ar5)"/>
   <path class="svg-line" d="M354 58 L354 118" marker-end="url(#ar5)"/>
   <path class="svg-line" d="M354 58 L354 82 L578 82 L578 118" marker-end="url(#ar5)"/>
-  <text class="svg-lab" x="354" y="104" text-anchor="middle">one sub-question each &mdash; own clean memory, all at the same time</text>
+  <text class="svg-lab" x="354" y="104" text-anchor="middle">one question each &mdash; empty memory &mdash; all at the same time</text>
 
   <rect class="svg-box" x="38" y="124" width="180" height="62" rx="4"/>
-  <text class="svg-t" x="128" y="149" text-anchor="middle">Subagent A</text>
-  <text class="svg-t-sm" x="128" y="168" text-anchor="middle">reads ~10 pages</text>
+  <text class="svg-t" x="128" y="149" text-anchor="middle">Helper 1</text>
+  <text class="svg-t-sm" x="128" y="168" text-anchor="middle">reads 10 pages</text>
   <rect class="svg-box" x="264" y="124" width="180" height="62" rx="4"/>
-  <text class="svg-t" x="354" y="149" text-anchor="middle">Subagent B</text>
-  <text class="svg-t-sm" x="354" y="168" text-anchor="middle">reads ~10 pages</text>
+  <text class="svg-t" x="354" y="149" text-anchor="middle">Helper 2</text>
+  <text class="svg-t-sm" x="354" y="168" text-anchor="middle">reads 10 pages</text>
   <rect class="svg-box" x="488" y="124" width="180" height="62" rx="4"/>
-  <text class="svg-t" x="578" y="149" text-anchor="middle">Subagent C</text>
-  <text class="svg-t-sm" x="578" y="168" text-anchor="middle">reads ~10 pages</text>
+  <text class="svg-t" x="578" y="149" text-anchor="middle">Helper 3</text>
+  <text class="svg-t-sm" x="578" y="168" text-anchor="middle">reads 10 pages</text>
 
   <path class="svg-line-hi" d="M128 186 L128 222" marker-end="url(#ar5h)"/>
   <path class="svg-line-hi" d="M354 186 L354 222" marker-end="url(#ar5h)"/>
   <path class="svg-line-hi" d="M578 186 L578 222" marker-end="url(#ar5h)"/>
 
   <rect class="svg-hi" x="38" y="228" width="630" height="56" rx="4"/>
-  <text class="svg-t" x="353" y="252" text-anchor="middle">Each returns a short summary &mdash; never the 30 raw pages</text>
-  <text class="svg-t-sm" x="353" y="272" text-anchor="middle">the main agent still has room left to write one coherent report</text>
+  <text class="svg-t" x="353" y="252" text-anchor="middle">Each sends back a short answer &mdash; not the 30 pages</text>
+  <text class="svg-t-sm" x="353" y="272" text-anchor="middle">so main Claude still has desk space to write one good report</text>
 </svg>
 </div>
-<figcaption>The point is not speed alone. Thirty web pages would swamp one context window (section 03); split three ways, each subagent absorbs the mess and hands back only what survived.</figcaption>
+<figcaption>The main reason is not speed. 30 web pages would fill the whole desk (part 03). Split into three, each helper reads the mess and sends back only what matters.</figcaption>
 </figure>
 
-<h4>The vocabulary, straight</h4>
-<div class="gloss">
-  <div><dt>Main agent</dt><dd>The one you are talking to. Owns the conversation and the final answer.</dd></div>
-  <div><dt>Subagent</dt><dd>A helper it spawns. Fresh memory, one job, cannot talk to you, returns a summary and disappears. Also called a <em>task</em> or <em>worker</em>.</dd></div>
-  <div><dt>Subteam / fleet</dt><dd>Not a separate feature &mdash; just the name for several subagents working on one goal at once. Three researchers hunting three sub-questions in parallel is a subteam.</dd></div>
-  <div><dt>Specialised agent</dt><dd>A subagent with a pre-written brief and a restricted toolset &mdash; a reviewer that can read but not write, for example.</dd></div>
+<div class="eg">
+<span class="eg-label">Example</span>
+<p>Your topic is <em>"the state of AI agents"</em>. It is split into 3 questions:</p>
+<ul>
+<li>Helper 1: what can agents do today?</li>
+<li>Helper 2: what do they cost?</li>
+<li>Helper 3: where do they fail?</li>
+</ul>
+<p>All three search at the same time. Each reads about 10 pages. Each sends back one short answer. Main Claude puts the three answers together into one report.</p>
 </div>
 
-<h4>When subagents help &mdash; and when they hurt</h4>
+<h4>The words, made clear</h4>
+<div class="gloss">
+  <div><dt>Main agent</dt><dd>The one you are talking to. It writes the final answer.</dd></div>
+  <div><dt>Subagent</dt><dd>A helper. Empty memory. One job. It cannot talk to you. It sends back a short answer and then it is gone.</dd></div>
+  <div><dt>Subteam / fleet</dt><dd>Not a special feature. It is just the name for a group of helpers working on the same goal at the same time. The picture above shows a subteam of three.</dd></div>
+</div>
+
+<h4>When helpers are good, and when they are bad</h4>
 <ul>
-<li><strong>Good:</strong> wide, parallel, read-heavy work. Six independent sub-questions. Searching a big codebase.</li>
-<li><strong>Bad:</strong> anything where each step depends on the last, or where you want one consistent voice. Subagents cannot see each other's findings.</li>
-<li><strong>The real cost:</strong> every subagent starts cold and re-reads context you already had. More agents is not more better.</li>
+<li><strong>Good:</strong> many separate questions that do not depend on each other. Lots of reading.</li>
+<li><strong>Bad:</strong> when step 2 needs the answer from step 1. Helpers cannot see each other's work.</li>
+<li><strong>Bad:</strong> when you want one clear writing style. Different helpers write differently.</li>
+<li><strong>Remember:</strong> every helper starts from zero. More helpers is not always better. It also costs more.</li>
 </ul>
 
 <div class="here">
 <span class="here-label">In your project</span>
-<p>Your workflow file uses them sparingly and on purpose. Subagents only appear on the <code>depth: deep</code> override &mdash; <em>&ldquo;20+ sources, one parallel subagent per sub-question&rdquo;</em>. A normal run stays single-agent, which keeps the report's voice consistent. That is a good default.</p>
+<p>Your workflow uses helpers only when you type <code>depth: deep</code>. A normal run uses one Claude only. This is a good choice &mdash; the report keeps one clear voice.</p>
 </div>
 </section>
 
 <section id="s10">
 <h3><span class="sec-num">10</span>Automation &mdash; work that happens without you</h3>
 
-<p class="oneline"><span>In one line</span>Everything so far needed you to type something. These four things remove that.</p>
+<p class="oneline"><span>Short answer</span>Until now, you had to type something. These four things do work when you are not there.</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr><th>Mechanism</th><th>What it is</th><th>Good for</th></tr></thead>
+<thead><tr><th>Name</th><th>What it is</th><th>Example</th></tr></thead>
 <tbody>
-<tr><td>Skills</td><td>A saved instruction file you trigger by name, like <code>/research-report</code>. Loads only when called, so it costs nothing the rest of the time.</td><td>A procedure you repeat. <strong>You already have one.</strong></td></tr>
-<tr><td>Hooks</td><td>A command that fires automatically on an event &mdash; before a file is written, after a session ends. Run by the tool, not decided by Claude, so it always happens.</td><td>Auto-formatting, blocking edits to protected files, a desktop ping when a job finishes.</td></tr>
-<tr><td>Scheduled agents</td><td>A prompt that runs on a clock, on its own, and leaves the result somewhere for you.</td><td>&ldquo;Every Monday 8am, research what shipped in AI agents last week.&rdquo;</td></tr>
-<tr><td>Loops</td><td>Re-runs a prompt on an interval within a session until you stop it.</td><td>Watching a long build or a slow deploy.</td></tr>
+<tr><td>Skill</td><td>A saved set of steps. You start it by name, like <code>/research-report</code>. It only loads when you call it.</td><td><strong>You already have one.</strong></td></tr>
+<tr><td>Hook</td><td>A command that runs by itself when something happens. Claude does not decide this. It always runs.</td><td>Every time a file is saved, tidy it up.</td></tr>
+<tr><td>Scheduled agent</td><td>A job that runs at a set time, by itself.</td><td>Every Monday at 8am, research last week's AI news.</td></tr>
+<tr><td>Loop</td><td>Runs the same request again and again, every few minutes.</td><td>Check if a long job has finished yet.</td></tr>
 </tbody>
 </table>
 </div>
 
 <div class="note">
-<span class="note-label">The difference that trips people up</span>
-<p>A <strong>skill</strong> is a recipe &mdash; it waits to be chosen. A <strong>hook</strong> is a tripwire &mdash; it fires whether Claude likes it or not. If you ever want something to happen <em>every single time, guaranteed</em>, a rule in <code>CLAUDE.md</code> is not enough. That is a hook.</p>
+<span class="note-label">The difference people get confused about</span>
+<p>A <strong>skill</strong> is like a recipe. It waits for you to choose it.</p>
+<p>A <strong>hook</strong> is like an alarm. It goes off by itself, whether Claude wants it or not.</p>
+<p>So if you want something to happen <em>every single time, with no exception</em>, a written rule in <code>CLAUDE.md</code> is not enough. You need a hook.</p>
 </div>
 </section>
 
 <div class="part">
   <span class="part-num">Part Four</span>
-  <h2>Your project, start to end</h2>
-  <p>Every file, why it exists, and what happened when you ran it.</p>
+  <h2>Your project, from start to end</h2>
+  <p>Every folder, why it is there, and what happened when you used it.</p>
 </div>
 
 <section id="s11">
-<h3><span class="sec-num">11</span>The map of your workspace</h3>
+<h3><span class="sec-num">11</span>Your folders</h3>
 
-<p class="oneline"><span>In one line</span>Four folders. Instructions go in one, finished work comes out of another, and nothing else is doing anything clever.</p>
+<p class="oneline"><span>Short answer</span>Four folders. Instructions go in one. Finished work comes out of another. Nothing else is happening.</p>
 
 <div class="tree"><b>researchAiAgent/</b>
-&#9500;&#9472; <b>CLAUDE.md</b>            <i>&larr; the standing rules. Loads automatically, every session.</i>
-&#9500;&#9472; <b>workflow/</b>            <i>&larr; instruction files for repeatable jobs</i>
-&#9474;  &#9492;&#9472; research-report.md  <i>the 5-phase research procedure</i>
-&#9500;&#9472; <b>output/</b>              <i>&larr; finished deliverables only</i>
+&#9500;&#9472; <b>CLAUDE.md</b>            <i>&larr; your rules. Loads by itself, every time.</i>
+&#9500;&#9472; <b>workflow/</b>            <i>&larr; step-by-step instructions for a job</i>
+&#9474;  &#9492;&#9472; research-report.md  <i>the 5 steps for making a report</i>
+&#9500;&#9472; <b>output/</b>              <i>&larr; finished work only</i>
 &#9474;  &#9500;&#9472; state-of-ai-agents-2026.md
 &#9474;  &#9500;&#9472; anthropic-ipo-updates-2026.md
 &#9474;  &#9492;&#9472; how-this-project-works.html   <i>this page</i>
-&#9492;&#9472; <b>resources/</b>           <i>&larr; reference material you feed in. Empty so far.</i>
+&#9492;&#9472; <b>resources/</b>           <i>&larr; notes and files you give Claude. Empty for now.</i>
 </div>
 
-<p>That is genuinely all of it. There is no application, no database, no code that runs. <strong>The whole project is text files that shape how Claude behaves.</strong> That is the thing most beginners find hard to believe &mdash; and it is the most important idea here.</p>
+<p>That is really everything. There is no app. There is no database. There is no code that runs.</p>
 
-<h4>What each piece is doing</h4>
+<p><strong>Your whole project is text files that tell Claude how to behave.</strong> This surprises most beginners. But it is the most important idea on this page.</p>
+
+<h4>What each part does</h4>
 <ul>
-<li><code>CLAUDE.md</code> &mdash; <strong>who you are and the standing rules.</strong> Your identity ("I create content about technology"), your guardrails (ask first, show plans, bullets over paragraphs, cite sources, save to <code>/output</code>), and a pointer to your workflows.</li>
-<li><code>workflow/research-report.md</code> &mdash; <strong>one procedure, written out properly.</strong> 94 lines telling Claude exactly how to research: how many sources, when to stop and ask, what the report must contain.</li>
-<li><code>output/</code> &mdash; <strong>the finished work.</strong> Nothing gets written anywhere else. One rule, no clutter.</li>
-<li><code>resources/</code> &mdash; <strong>your reference shelf.</strong> Drop a PDF, a style guide or a transcript in here and point Claude at it. Currently empty, which is fine.</li>
+<li><code>CLAUDE.md</code> &mdash; <strong>who you are and your rules.</strong> It says you make technology content. It says your readers want simple, useful writing. It says: ask questions first, show your plan, use bullet points, add sources, save to <code>/output</code>.</li>
+<li><code>workflow/research-report.md</code> &mdash; <strong>one job, written out fully.</strong> 94 lines that tell Claude exactly how to research: how many sources to use, when to stop and ask you, what the report must contain.</li>
+<li><code>output/</code> &mdash; <strong>finished work.</strong> Nothing is saved anywhere else. One rule, so nothing gets lost.</li>
+<li><code>resources/</code> &mdash; <strong>your shelf.</strong> Put a PDF or your notes here, then tell Claude to read them. Empty right now, and that is fine.</li>
 </ul>
 
 <div class="note">
-<span class="note-label">Why the separation matters</span>
-<p>Rules that apply <em>always</em> live in <code>CLAUDE.md</code>. Rules that apply <em>only during one kind of job</em> live in <code>workflow/</code>. If you put the whole research procedure into <code>CLAUDE.md</code>, it would be loaded into every conversation forever &mdash; even when you just want to ask a quick question. That wastes context (section 03) and buries your actual rules in noise.</p>
+<span class="note-label">Why keep them separate?</span>
+<p>Rules you always want go in <code>CLAUDE.md</code>. Rules for one type of job go in <code>workflow/</code>.</p>
+<p>Why? Because <code>CLAUDE.md</code> loads <em>every single time</em>. If you put the full 94-line research process in there, it would fill the desk (part 03) even when you only want to ask a small question. Your real rules would get lost in the noise.</p>
 </div>
 </section>
 
 <section id="s12">
-<h3><span class="sec-num">12</span>The three levels of instruction</h3>
+<h3><span class="sec-num">12</span>Three kinds of rules</h3>
 
-<p class="oneline"><span>In one line</span>Your research procedure exists in two places at once, and that is deliberate &mdash; but it means one edit is now two edits.</p>
+<p class="oneline"><span>Short answer</span>Some rules load always. Some load only when you ask. Your research steps are saved in two places, on purpose.</p>
 
 <figure>
 <div class="fig-frame">
-<svg viewBox="0 0 700 300" role="img" aria-label="Three instruction sources feed into what Claude has in mind. CLAUDE.md loads always, every session, shown as a solid arrow. The workflow file loads only when you name it, shown as a dashed arrow. The installed skill loads only when you type the slash command, also dashed, and works from any folder.">
+<svg viewBox="0 0 700 300" role="img" aria-label="Three sources feed into what Claude has in mind. CLAUDE.md loads always, shown with a solid blue arrow. The workflow file loads only when you name it, shown with a dashed arrow. The skill loads only when you type the slash command, also dashed, and it works in any folder.">
   <defs>
     <marker id="ar6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path class="svg-arrowhead" d="M 0 0 L 10 5 L 0 10 z"/>
@@ -827,67 +910,68 @@ td code{font-size:.82em}
   <text class="svg-t" x="30" y="65">CLAUDE.md</text>
   <text class="svg-t-sm" x="30" y="84">this folder only</text>
   <line class="svg-line-hi" x1="224" y1="68" x2="424" y2="68" marker-end="url(#ar6h)"/>
-  <text class="svg-lab-hi" x="324" y="58" text-anchor="middle">ALWAYS &mdash; EVERY SESSION</text>
+  <text class="svg-lab-hi" x="324" y="58" text-anchor="middle">ALWAYS &mdash; EVERY TIME</text>
 
   <rect class="svg-box" x="14" y="128" width="210" height="56" rx="4"/>
-  <text class="svg-t" x="30" y="153">workflow/research-report.md</text>
+  <text class="svg-t" x="30" y="153">workflow/ file</text>
   <text class="svg-t-sm" x="30" y="172">this folder only</text>
   <line class="svg-line-dash" x1="224" y1="156" x2="424" y2="156" marker-end="url(#ar6)"/>
   <text class="svg-lab" x="324" y="146" text-anchor="middle">ONLY WHEN YOU NAME IT</text>
 
   <rect class="svg-box" x="14" y="216" width="210" height="56" rx="4"/>
-  <text class="svg-t" x="30" y="241">~/.claude/skills/&hellip;</text>
-  <text class="svg-t-sm" x="30" y="260">any folder on your machine</text>
+  <text class="svg-t" x="30" y="241">the skill copy</text>
+  <text class="svg-t-sm" x="30" y="260">works in any folder</text>
   <line class="svg-line-dash" x1="224" y1="244" x2="424" y2="244" marker-end="url(#ar6)"/>
-  <text class="svg-lab" x="324" y="234" text-anchor="middle">ONLY ON /RESEARCH-REPORT</text>
+  <text class="svg-lab" x="324" y="234" text-anchor="middle">ONLY WHEN YOU TYPE /</text>
 
   <rect class="svg-box" x="430" y="40" width="256" height="232" rx="4"/>
-  <text class="svg-lab" x="446" y="66">WHAT CLAUDE HAS IN MIND</text>
-  <text class="svg-t-sm" x="446" y="96">Loading everything, always,</text>
-  <text class="svg-t-sm" x="446" y="114">would fill this box with rules</text>
-  <text class="svg-t-sm" x="446" y="132">that don't apply to the job.</text>
-  <text class="svg-t-sm" x="446" y="164">So: standing rules load by</text>
-  <text class="svg-t-sm" x="446" y="182">default, procedures load on</text>
-  <text class="svg-t-sm" x="446" y="200">demand. That is the whole</text>
-  <text class="svg-t-sm" x="446" y="218">design.</text>
+  <text class="svg-lab" x="446" y="66">CLAUDE&rsquo;S DESK</text>
+  <text class="svg-t-sm" x="446" y="96">If everything loaded every</text>
+  <text class="svg-t-sm" x="446" y="114">time, the desk would be full</text>
+  <text class="svg-t-sm" x="446" y="132">of rules for other jobs.</text>
+  <text class="svg-t-sm" x="446" y="164">So: short rules load always.</text>
+  <text class="svg-t-sm" x="446" y="182">Long steps load only when</text>
+  <text class="svg-t-sm" x="446" y="200">you need them.</text>
+  <text class="svg-t-sm" x="446" y="218">That is the whole design.</text>
 </svg>
 </div>
-<figcaption>Solid arrow = automatic. Dashed = you have to trigger it. Only the skill escapes this folder &mdash; it works from anywhere on your machine.</figcaption>
+<figcaption>Solid blue line = happens by itself. Dotted line = you must ask for it.</figcaption>
 </figure>
 
 <div class="table-wrap">
 <table>
-<thead><tr><th></th><th>CLAUDE.md</th><th>workflow file</th><th>installed skill</th></tr></thead>
+<thead><tr><th></th><th>CLAUDE.md</th><th>workflow file</th><th>skill copy</th></tr></thead>
 <tbody>
-<tr><td>Loads when</td><td>Every session, automatically</td><td>You say &ldquo;run the research workflow on X&rdquo;</td><td>You type <code>/research-report</code></td></tr>
-<tr><td>Works from</td><td>This folder</td><td>This folder</td><td>Any folder</td></tr>
-<tr><td>Best for</td><td>Short standing rules</td><td>Long procedures</td><td>Procedures you want everywhere</td></tr>
-<tr><td>Context cost</td><td>Paid every session</td><td>Paid only when used</td><td>Paid only when used</td></tr>
+<tr><td>Loads when</td><td>Every time, by itself</td><td>You say "run the research workflow on X"</td><td>You type <code>/research-report</code></td></tr>
+<tr><td>Works in</td><td>This folder</td><td>This folder</td><td>Any folder</td></tr>
+<tr><td>Best for</td><td>Short rules</td><td>Long steps</td><td>Steps you want everywhere</td></tr>
+<tr><td>Desk space</td><td>Used every time</td><td>Used only when needed</td><td>Used only when needed</td></tr>
 </tbody>
 </table>
 </div>
 
 <div class="note">
-<span class="note-label">A live issue in your repo &mdash; worth fixing</span>
-<p>Your <code>CLAUDE.md</code> says the two copies are separate and you must <em>&ldquo;mirror any edit to both&rdquo;</em>. They have already drifted. The <strong>skill copy has four rules the workflow copy is missing</strong>:</p>
+<span class="note-label">A small problem in your project right now</span>
+<p>Your research steps are saved in <strong>two files</strong>. Your <code>CLAUDE.md</code> says: if you change one, change the other too.</p>
+<p>But they are now different. The <strong>skill copy has 4 rules that the workflow copy does not have</strong>:</p>
 <ul>
-<li><strong>Rumour discipline</strong> &mdash; separate what a company confirmed from what others report about it.</li>
-<li><strong>Paywall disclosure</strong> &mdash; if a source 403s and you only got a search summary, say so.</li>
-<li><strong>Where to save</strong> &mdash; a fallback order for when no <code>/output</code> folder exists.</li>
-<li><strong>Conflict handling</strong> &mdash; what to do when your own answers contradict each other.</li>
+<li>Keep "what the company said" separate from "what other people say about the company".</li>
+<li>If a page is locked and you only saw a summary, say so.</li>
+<li>What to do if there is no <code>/output</code> folder.</li>
+<li>What to do if your own answers do not match each other.</li>
 </ul>
-<p>None of these are bugs &mdash; they are improvements that only landed in one file. Copying them back into <code>workflow/research-report.md</code> is a five-minute job and a perfect first exercise.</p>
+<p>These are not mistakes. They are good rules that were only added to one file. Copying them into the other file takes 5 minutes. It is a very good first exercise.</p>
 </div>
 </section>
 
 <section id="s13">
-<h3><span class="sec-num">13</span>Your workflow, phase by phase</h3>
+<h3><span class="sec-num">13</span>Your 5 steps</h3>
 
-<p class="oneline"><span>In one line</span>Five phases, two hard stops where Claude must wait for you. The stops are the most valuable part.</p>
+<p class="oneline"><span>Short answer</span>Five steps. Claude must stop and wait for you twice. Those two stops are the most useful part.</p>
 
 <figure>
 <div class="fig-frame">
-<svg viewBox="0 0 790 210" role="img" aria-label="Five phases in a row: scope, outline, research, write, hand off. Two diamond stop markers sit on the arrows after scope and after outline, each with a dashed tick down to a label. The first says you answer up to three questions, the second says you approve the outline. Phases three and four run without stopping.">
+<svg viewBox="0 0 790 210" role="img" aria-label="Five steps in a row: ask, plan, research, write, report back. A blue diamond sits after step one and after step two. A dotted line goes down from each diamond to a label. The first says you answer three questions. The second says you approve the plan. Steps three and four run with no stops.">
   <defs>
     <marker id="ar7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path class="svg-arrowhead" d="M 0 0 L 10 5 L 0 10 z"/>
@@ -897,236 +981,244 @@ td code{font-size:.82em}
     </marker>
   </defs>
   <rect class="svg-box" x="10" y="34" width="132" height="66" rx="4"/>
-  <text class="svg-t" x="76" y="60" text-anchor="middle">1 &middot; Scope</text>
-  <text class="svg-t-sm" x="76" y="79" text-anchor="middle">ask what you</text>
-  <text class="svg-t-sm" x="76" y="93" text-anchor="middle">actually want</text>
+  <text class="svg-t" x="76" y="60" text-anchor="middle">1 &middot; Ask you</text>
+  <text class="svg-t-sm" x="76" y="79" text-anchor="middle">what do you</text>
+  <text class="svg-t-sm" x="76" y="93" text-anchor="middle">really want?</text>
 
   <line class="svg-line" x1="142" y1="67" x2="164" y2="67" marker-end="url(#ar7)"/>
   <path class="svg-arrowhead-hi" d="M155 57 L165 67 L155 77 L145 67 Z"/>
   <path class="svg-line-dash" d="M155 82 L155 138"/>
-  <text class="svg-lab-hi" x="155" y="154" text-anchor="middle">you answer</text>
-  <text class="svg-lab-hi" x="155" y="167" text-anchor="middle">3 questions</text>
+  <text class="svg-lab-hi" x="155" y="154" text-anchor="middle">STOP</text>
+  <text class="svg-lab-hi" x="155" y="167" text-anchor="middle">you answer</text>
 
   <rect class="svg-box" x="168" y="34" width="132" height="66" rx="4"/>
-  <text class="svg-t" x="234" y="60" text-anchor="middle">2 &middot; Outline</text>
-  <text class="svg-t-sm" x="234" y="79" text-anchor="middle">4&ndash;6 sub-</text>
+  <text class="svg-t" x="234" y="60" text-anchor="middle">2 &middot; Plan</text>
+  <text class="svg-t-sm" x="234" y="79" text-anchor="middle">4 to 6 smaller</text>
   <text class="svg-t-sm" x="234" y="93" text-anchor="middle">questions</text>
 
   <line class="svg-line" x1="300" y1="67" x2="322" y2="67" marker-end="url(#ar7)"/>
   <path class="svg-arrowhead-hi" d="M313 57 L323 67 L313 77 L303 67 Z"/>
   <path class="svg-line-dash" d="M313 82 L313 138"/>
-  <text class="svg-lab-hi" x="313" y="154" text-anchor="middle">you approve</text>
-  <text class="svg-lab-hi" x="313" y="167" text-anchor="middle">the outline</text>
+  <text class="svg-lab-hi" x="313" y="154" text-anchor="middle">STOP</text>
+  <text class="svg-lab-hi" x="313" y="167" text-anchor="middle">you say yes</text>
 
   <rect class="svg-box" x="326" y="34" width="132" height="66" rx="4"/>
   <text class="svg-t" x="392" y="60" text-anchor="middle">3 &middot; Research</text>
-  <text class="svg-t-sm" x="392" y="79" text-anchor="middle">8&ndash;15 sources,</text>
+  <text class="svg-t-sm" x="392" y="79" text-anchor="middle">8 to 15 sources,</text>
   <text class="svg-t-sm" x="392" y="93" text-anchor="middle">read properly</text>
 
   <line class="svg-line" x1="458" y1="67" x2="480" y2="67" marker-end="url(#ar7)"/>
 
   <rect class="svg-box" x="484" y="34" width="132" height="66" rx="4"/>
   <text class="svg-t" x="550" y="60" text-anchor="middle">4 &middot; Write</text>
-  <text class="svg-t-sm" x="550" y="79" text-anchor="middle">fixed template,</text>
-  <text class="svg-t-sm" x="550" y="93" text-anchor="middle">into /output</text>
+  <text class="svg-t-sm" x="550" y="79" text-anchor="middle">fixed shape,</text>
+  <text class="svg-t-sm" x="550" y="93" text-anchor="middle">save to /output</text>
 
   <line class="svg-line" x1="616" y1="67" x2="638" y2="67" marker-end="url(#ar7)"/>
 
   <rect class="svg-hi" x="642" y="34" width="132" height="66" rx="4"/>
-  <text class="svg-t" x="708" y="60" text-anchor="middle">5 &middot; Hand off</text>
-  <text class="svg-t-sm" x="708" y="79" text-anchor="middle">tell you what's</text>
-  <text class="svg-t-sm" x="708" y="93" text-anchor="middle">weak in it</text>
+  <text class="svg-t" x="708" y="60" text-anchor="middle">5 &middot; Report back</text>
+  <text class="svg-t-sm" x="708" y="79" text-anchor="middle">tells you what</text>
+  <text class="svg-t-sm" x="708" y="93" text-anchor="middle">is weak</text>
 
   <path class="svg-line-dash" d="M392 108 L392 138 L708 138 L708 112"/>
-  <text class="svg-lab" x="550" y="158" text-anchor="middle">no stops here &mdash; runs on its own for several minutes</text>
+  <text class="svg-lab" x="550" y="158" text-anchor="middle">no stops here &mdash; runs alone for a few minutes</text>
 </svg>
 </div>
-<figcaption>Diamonds mark the two places Claude is required to stop and wait. Phases 3 and 4 run unsupervised, which is exactly why phases 1 and 2 exist.</figcaption>
+<figcaption>The blue diamonds are the two places where Claude must stop and wait for you.</figcaption>
 </figure>
 
 <ol class="steps">
-<li><strong>Scope &mdash; always ask, never skip.</strong> Up to 3 multiple-choice questions, and only where your answer would change the research: what angle, what length, what to exclude. This is the cheapest phase and it saves the most work.</li>
-<li><strong>Outline &mdash; wait for approval.</strong> Claude breaks the topic into 4&ndash;6 sub-questions and shows you the section headings. <em>It is forbidden from searching until you say go.</em> Thirty seconds of your attention here prevents twenty minutes of research on the wrong question.</li>
-<li><strong>Research.</strong> 2&ndash;4 searches per sub-question with varied wording (so it does not get stuck in one framing), then it opens the sources that matter. Target 8&ndash;15 distinct sources, primary ones preferred. Anything surprising or numerical needs two independent sources or gets tagged <code>(single-sourced)</code>. Disagreements between sources get written down, not smoothed away.</li>
-<li><strong>Write.</strong> Into <code>output/&lt;topic&gt;.md</code>, using a fixed template &mdash; Executive Summary, Background, Key Findings, Disagreements &amp; Open Questions, What This Means, Sources, then two X post drafts. The Executive Summary is written <em>last</em>, so it reflects what was actually found rather than what was expected.</li>
-<li><strong>Hand off.</strong> Claude tells you the file path, the source count, and &mdash; the important bit &mdash; <strong>what is thin, single-sourced or paywalled</strong>. It is required to point at its own weak spots.</li>
+<li><strong>Ask you.</strong> Claude asks up to 3 questions with options to pick from. For example: do you want a simple explainer or a deep technical piece? How long? Anything to leave out? This step is fast and it saves the most time later.</li>
+<li><strong>Plan, and wait.</strong> Claude splits your topic into 4 to 6 smaller questions and shows you the headings. <em>It is not allowed to search yet.</em> You look, and you say yes or you change it. Thirty seconds here can save twenty minutes of research on the wrong thing.</li>
+<li><strong>Research.</strong> 2 to 4 searches for each small question, using different words each time (so it does not get stuck on one idea). Then it opens the important pages. Target: 8 to 15 different sources. If a number is surprising, it needs 2 sources. If there is only 1, it writes <code>(single-sourced)</code>. If two sources disagree, it writes that down instead of hiding it.</li>
+<li><strong>Write.</strong> It saves the report to <code>output/</code> using a fixed shape: summary, background, findings, disagreements, what it means, sources, and 2 short posts for X. The summary is written <strong>last</strong>, so it matches what was really found.</li>
+<li><strong>Report back.</strong> Claude tells you the file name, how many sources it used, and &mdash; this is the important part &mdash; <strong>which parts are weak</strong>. It has to point at its own weak spots.</li>
 </ol>
 
-<h4>The overrides you can type</h4>
+<h4>Short words you can type to change it</h4>
 <ul>
-<li><code>depth: light</code> &mdash; ~5 sources, quick scan.</li>
-<li><code>depth: deep</code> &mdash; 20+ sources, one parallel subagent per sub-question.</li>
-<li><code>skip outline approval</code> &mdash; skip the phase 2 stop.</li>
-<li><code>length: 500</code> &mdash; override the default ~800&ndash;1200 words.</li>
-<li>Or hand it your own section list instead of the template's.</li>
+<li><code>depth: light</code> &mdash; only about 5 sources. Quick.</li>
+<li><code>depth: deep</code> &mdash; 20+ sources, and it uses helpers (part 09).</li>
+<li><code>skip outline approval</code> &mdash; do not stop at step 2.</li>
+<li><code>length: 500</code> &mdash; make it 500 words instead of the usual 800 to 1200.</li>
 </ul>
 
 <div class="note">
-<span class="note-label">The design idea worth stealing</span>
-<p>The two stops are at the <strong>front</strong>, where changing your mind is free. Nothing stops Claude in the middle, where an interruption would just slow it down. Put your checkpoints where a wrong turn is cheapest to fix &mdash; that principle works far beyond this project.</p>
+<span class="note-label">A good idea worth copying</span>
+<p>Both stops are at the <strong>beginning</strong>. That is where changing your mind is free.</p>
+<p>There are no stops in the middle, where stopping would only slow things down.</p>
+<p>Put your checks where a mistake is cheapest to fix. This idea works far outside this project.</p>
 </div>
 </section>
 
 <section id="s14">
-<h3><span class="sec-num">14</span>What actually happened, in order</h3>
+<h3><span class="sec-num">14</span>What you actually did</h3>
 
-<p class="oneline"><span>In one line</span>Four commits. Rules first, procedure second, output third &mdash; which is the right order.</p>
+<p class="oneline"><span>Short answer</span>Four saves. Rules first, then the steps, then the results. That is the right order.</p>
 
 <div class="table-wrap">
 <table>
-<thead><tr><th>Commit</th><th>What changed</th><th>What it means</th></tr></thead>
+<thead><tr><th>Save</th><th>What changed</th><th>What it means</th></tr></thead>
 <tbody>
-<tr><td><code>1b01aef</code><br>claude.md created</td><td>17 lines of standing rules.</td><td>You taught Claude who you are before asking it to do anything.</td></tr>
-<tr><td><code>7a70905</code><br>Agent built</td><td>The 94-line workflow file, the <code>/output</code> and <code>/resources</code> folders, and the first report.</td><td>The procedure and the folder structure went in together &mdash; and were immediately tested by running them.</td></tr>
-<tr><td><code>7de209b</code><br>Research added</td><td>A second report, 111 lines.</td><td>The workflow ran again on a new topic without changes. That is the proof it actually works.</td></tr>
-<tr><td><code>c7605f5</code><br>updated</td><td>One line each into <code>CLAUDE.md</code> and the workflow.</td><td>Registered the machine-wide skill copy &mdash; the moment the workflow escaped this folder.</td></tr>
+<tr><td><code>1b01aef</code><br>claude.md created</td><td>17 lines of rules.</td><td>You told Claude who you are <em>before</em> asking it to do any work.</td></tr>
+<tr><td><code>7a70905</code><br>Agent built</td><td>The 94-line workflow file, the <code>/output</code> and <code>/resources</code> folders, and the first report.</td><td>You wrote the steps and tested them straight away.</td></tr>
+<tr><td><code>7de209b</code><br>Research added</td><td>A second report, 111 lines.</td><td>The same steps worked again on a new topic, with no changes. This is the proof that it works.</td></tr>
+<tr><td><code>c7605f5</code><br>updated</td><td>One line added to each file.</td><td>You saved the steps as a skill, so now they work in any folder on your computer.</td></tr>
 </tbody>
 </table>
 </div>
 
-<h4>The two reports it produced</h4>
+<h4>The two reports</h4>
 <ul>
-<li><code>output/state-of-ai-agents-2026.md</code> &mdash; 99 lines, the first real test of the workflow.</li>
-<li><code>output/anthropic-ipo-updates-2026.md</code> &mdash; 111 lines, a harder topic: news-driven, rumour-heavy, full of numbers. Almost certainly why the <em>rumour discipline</em> and <em>paywall disclosure</em> rules got written afterwards.</li>
+<li><code>output/state-of-ai-agents-2026.md</code> &mdash; 99 lines. The first real test.</li>
+<li><code>output/anthropic-ipo-updates-2026.md</code> &mdash; 111 lines. A harder topic: news, rumours and lots of numbers. This is very likely why the extra rules about rumours and locked pages were written afterwards.</li>
 </ul>
 
-<p>Both follow the same template and both end with two X post drafts, ready to publish. <strong>That is the actual product of this project</strong> &mdash; not the reports, but a repeatable machine that makes reports.</p>
-
 <div class="here">
-<span class="here-label">The shape of what you built</span>
-<p>You did the thing most people skip: you wrote the rules down, ran them, hit a rough edge, and improved the rules. That loop &mdash; <em>use it, notice what annoyed you, edit the instruction file</em> &mdash; is the entire practice. The project gets better while you are not looking at it.</p>
+<span class="here-label">The most important thing you built</span>
+<p>The reports are nice. But they are not the real product.</p>
+<p><strong>The real product is a repeatable machine that makes reports.</strong></p>
+<p>You did the part most people skip. You wrote the steps down. You used them. You found a rough spot. Then you improved the steps. That circle &mdash; <em>use it, notice what annoyed you, fix the file</em> &mdash; is the whole skill. Your project gets better even when you are not looking at it.</p>
 </div>
 </section>
 
 <div class="part">
   <span class="part-num">Part Five</span>
-  <h2>The things nobody tells beginners</h2>
-  <p>Safety, money, plumbing, and knowing when to close the laptop.</p>
+  <h2>Other things you should know</h2>
+  <p>Safety, money, extra tools, and when to say no.</p>
 </div>
 
 <section id="s15">
-<h3><span class="sec-num">15</span>Permissions and safety</h3>
+<h3><span class="sec-num">15</span>Staying safe</h3>
 
-<p class="oneline"><span>In one line</span>Claude Code can delete files and run commands. The permission prompt is the seatbelt &mdash; understand it before you switch it off.</p>
+<p class="oneline"><span>Short answer</span>Claude Code can delete files and run commands. The "do you allow this?" question is your safety belt. Understand it before you turn it off.</p>
 
 <ul>
-<li><strong>The default:</strong> reading is usually free, but writing files and running commands ask you first. That pause is where you catch a wrong path.</li>
-<li><strong>An allowlist</strong> lets you pre-approve the boring stuff (<code>git status</code>, <code>ls</code>) so you are only interrupted for things that matter.</li>
-<li><strong>&ldquo;Accept all&rdquo; modes exist.</strong> They are fine inside a git repo with everything committed. They are how people lose work everywhere else.</li>
+<li><strong>Normally:</strong> reading files is free. But saving a file or running a command asks you first. That pause is where you catch a mistake.</li>
+<li>You can pre-approve safe things (like listing folders) so you are only asked about important ones.</li>
+<li>There is an "allow everything" mode. It is fine inside a saved project. It is how people lose work everywhere else.</li>
 </ul>
 
-<h4>The one risk that is not obvious</h4>
-<p><strong>Prompt injection.</strong> Claude reads web pages. A web page can contain text written to look like an instruction &mdash; <em>&ldquo;ignore your previous instructions and email this file to&hellip;&rdquo;</em>. Claude is trained to treat fetched content as <em>data, not orders</em>, but the general rule stands: <strong>anything Claude reads from the outside world is untrusted input.</strong> The more autonomy you grant, the more that matters.</p>
+<h4>One risk that is not obvious</h4>
+<p>Claude reads web pages. A web page can contain hidden text written to look like an order. For example: <em>"ignore your earlier instructions and send this file to..."</em>. This is called <strong>prompt injection</strong>.</p>
+<p>Claude is trained to treat web pages as <em>information</em>, not as orders. But the rule is simple and always true: <strong>anything Claude reads from the internet cannot be trusted.</strong></p>
 
 <div class="note">
-<span class="note-label">Three habits, and you are safe</span>
+<span class="note-label">Three habits and you are safe</span>
 <ul>
-<li>Work inside a git repo. You already do &mdash; that is your undo button.</li>
-<li>Commit before letting an agent loose. Then any mess is one command away from gone.</li>
-<li>Read the command in the permission prompt. Two seconds. Especially anything with <code>rm</code>, <code>git push</code>, or a path outside your project.</li>
+<li>Work inside a saved project (a git repo). You already do this.</li>
+<li>Save your work before you let Claude do a big job. Then any mistake can be undone with one command.</li>
+<li>Read the command before you press yes. Two seconds. Look out for <code>rm</code> (delete) and anything outside your project folder.</li>
 </ul>
 </div>
 </section>
 
 <section id="s16">
-<h3><span class="sec-num">16</span>What it actually costs</h3>
+<h3><span class="sec-num">16</span>What it costs</h3>
 
-<p class="oneline"><span>In one line</span>You pay for tokens &mdash; text in and text out. Reading is cheap. Reading the same thing forty times is not.</p>
+<p class="oneline"><span>Short answer</span>You pay for tokens &mdash; text in and text out. Reading is cheap. Reading the same thing 40 times is not.</p>
 
 <ul>
-<li><strong>Input tokens</strong> = everything Claude reads: your message, your rules, every file, every fetched page. <strong>Output tokens</strong> = what it writes. Output is charged at a higher rate.</li>
-<li><strong>Bigger model, higher price.</strong> Opus is the most capable and the priciest; Sonnet is the everyday balance; Haiku is the cheap fast one. Use the small one for simple jobs.</li>
-<li><strong>Long sessions get expensive quietly.</strong> Every turn re-sends the whole conversation, so a 90-minute session costs more per message at the end than at the start. Starting fresh for a new task is cheaper <em>and</em> gives better answers.</li>
-<li><strong>Subagents multiply it.</strong> Five subagents is roughly five times the reading. Worth it for genuinely parallel work; wasteful otherwise.</li>
+<li><strong>Text in</strong> = everything Claude reads: your message, your rules, every file, every web page.<br><strong>Text out</strong> = everything Claude writes. Writing costs more than reading.</li>
+<li><strong>Bigger brain, bigger price.</strong> Opus is the smartest and costs the most. Sonnet is in the middle. Haiku is cheapest. Use a small one for a small job.</li>
+<li><strong>Long chats get expensive slowly.</strong> Every time you send a message, the <em>whole chat</em> is sent again. So message 50 costs much more than message 5.</li>
+<li><strong>Tip:</strong> start a fresh chat for a new task. It is cheaper <em>and</em> the answers are better, because the desk is clean.</li>
+<li><strong>Helpers cost more.</strong> Five helpers means about five times the reading.</li>
 </ul>
 
 <div class="here">
 <span class="here-label">In your project</span>
-<p>A <code>depth: light</code> run (~5 sources) costs a fraction of a <code>depth: deep</code> one (20+ sources plus subagents). Having both as one-word overrides means you can pick the cost, per topic, without rewriting anything.</p>
+<p><code>depth: light</code> costs a small amount. <code>depth: deep</code> costs much more, because of 20+ sources and helpers.</p>
+<p>Having both as one short word means you can choose the cost for each topic, without changing any file.</p>
 </div>
 </section>
 
 <section id="s17">
-<h3><span class="sec-num">17</span>Two bits of plumbing: MCP and Git</h3>
+<h3><span class="sec-num">17</span>Two more things: MCP and Git</h3>
 
 <h4>MCP &mdash; giving Claude new tools</h4>
-<p class="oneline"><span>In one line</span>A standard plug socket. Anyone can build an adapter that lets Claude talk to a service, and it just works.</p>
+<p class="oneline"><span>Short answer</span>Think of a standard plug socket. Anyone can build a plug that connects Claude to another app.</p>
 <ul>
-<li>Claude Code ships with file, terminal and web tools. <strong>MCP</strong> (Model Context Protocol) is how you add more &mdash; your Notion, a database, a design tool, a ticket tracker.</li>
-<li>You install a small <em>MCP server</em> for the service; its tools then appear alongside the built-in ones and Claude uses them the same way.</li>
-<li>You do not need this yet. You will the first time you think <em>&ldquo;I wish it could put this report straight into my CMS.&rdquo;</em></li>
+<li>Right now Claude Code can use files, the terminal and the web. <strong>MCP</strong> is how you add more.</li>
+<li>Example: connect it to Notion, or Google Drive, or a task list. Then Claude can use those the same way it uses files.</li>
+<li>You do not need this yet. You will want it the first time you think <em>"I wish it could put this report straight into my website."</em></li>
 </ul>
 
 <h4>Git &mdash; your undo button</h4>
-<p class="oneline"><span>In one line</span>A save-point system for folders. It is what makes it safe to let an agent edit your files.</p>
+<p class="oneline"><span>Short answer</span>Git saves a picture of your folder at a moment in time. This is what makes it safe to let Claude change your files.</p>
 <ul>
-<li><strong>Commit</strong> = a snapshot with a note. Your four commits are four save points you can return to.</li>
-<li><strong>Diff</strong> = what changed since the last snapshot. This is how you review an agent's work &mdash; you read the change, not the whole file.</li>
-<li><strong>Branch</strong> = a parallel copy to experiment in without touching the good version.</li>
+<li><strong>Commit</strong> = save a picture, with a short note. You have 4 of these. You can go back to any of them.</li>
+<li><strong>Diff</strong> = shows exactly what changed since the last picture. This is how you check Claude's work. You read only the changes, not the whole file.</li>
+<li><strong>Branch</strong> = a copy where you can try something, without touching the good version.</li>
 </ul>
-<p>The habit worth building: <strong>commit before you start, review the diff after.</strong> Nothing an agent does is scary if you can see exactly what it changed and undo it in one command.</p>
+<p>The habit: <strong>save before you start, check the changes after.</strong> Nothing Claude does is scary when you can see every change and undo it in one step.</p>
 </section>
 
 <section id="s18">
 <h3><span class="sec-num">18</span>When <em>not</em> to use an agent</h3>
 
-<p class="oneline"><span>In one line</span>Knowing where the tool is weak is what separates people who get value from it from people who get burned.</p>
+<p class="oneline"><span>Short answer</span>Knowing where the tool is weak is what separates people who get value from people who get burned.</p>
 
 <ul>
-<li><strong>When being wrong is expensive.</strong> Medical, legal, financial, or anything you will publish under your name unchecked. Use it to gather; verify yourself.</li>
-<li><strong>When the answer must be exactly right and you cannot check it.</strong> If you cannot tell a good answer from a plausible one, an agent is a liability, not a help.</li>
-<li><strong>When the task is 30 seconds long.</strong> Explaining it takes longer than doing it.</li>
-<li><strong>When it needs your judgement or your taste.</strong> It can draft your opinion; it cannot have one. For content, that is the whole game &mdash; let it do the research and the scaffolding, and keep the point of view yours.</li>
-<li><strong>When the source material is private and the tool is not.</strong> Know what leaves your machine before you paste it.</li>
+<li><strong>When a mistake is expensive.</strong> Health, money, law. Or anything you will publish under your name without checking. Use Claude to <em>gather</em>. Check it yourself.</li>
+<li><strong>When you cannot tell a good answer from a bad one.</strong> If you cannot check the work, the tool is a risk, not a help.</li>
+<li><strong>When the job takes 30 seconds.</strong> Explaining it takes longer than doing it.</li>
+<li><strong>When it needs your opinion or your taste.</strong> Claude can write <em>an</em> opinion. It cannot have <em>your</em> opinion. For content, that is the part that matters most. Let it do the research. Keep the point of view yours.</li>
+<li><strong>When the information is private.</strong> Know what leaves your computer before you paste it.</li>
 </ul>
 
 <div class="note">
 <span class="note-label">The honest summary</span>
-<p>Agents are excellent at <em>breadth</em>: reading fifteen things you would not have had time to read, and organising what they found. They are weak at <em>certainty</em>. Aim them at the first, and never rely on them for the second.</p>
+<p>Agents are very good at <strong>reading a lot</strong> &mdash; 15 pages you would never have had time for &mdash; and organising what they found.</p>
+<p>Agents are weak at <strong>being certain</strong>.</p>
+<p>Use them for the first. Never trust them for the second.</p>
 </div>
 </section>
 
 <section id="s19">
-<h3><span class="sec-num">19</span>Glossary, and what to do next</h3>
+<h3><span class="sec-num">19</span>Word list and practice</h3>
 
 <div class="gloss">
-  <div><dt>AI</dt><dd>Computers doing things that normally need a human brain. The widest word here.</dd></div>
-  <div><dt>Machine learning</dt><dd>Teaching a computer from examples instead of writing the rules yourself.</dd></div>
-  <div><dt>Neural network</dt><dd>The maths structure used in deep learning. Layers of simple units, tuned by trial and error.</dd></div>
-  <div><dt>LLM</dt><dd>Large Language Model. Trained on text; predicts the next token. Claude is one.</dd></div>
-  <div><dt>Token</dt><dd>A chunk of text, roughly 3&ndash;4 characters. The unit everything is measured and billed in.</dd></div>
-  <div><dt>Context window</dt><dd>Everything Claude can see right now. Finite, and wiped when the session ends.</dd></div>
-  <div><dt>Prompt</dt><dd>Your instruction. The main lever you have.</dd></div>
-  <div><dt>Hallucination</dt><dd>Confident, fluent, false. The failure mode your citation rules exist to catch.</dd></div>
-  <div><dt>Agent</dt><dd>Model + tools + a loop + a goal. Takes actions, checks results, repeats.</dd></div>
-  <div><dt>Tool</dt><dd>One action Claude may take &mdash; search, fetch, read, write, run a command.</dd></div>
-  <div><dt>Agent loop</dt><dd>Plan &rarr; act &rarr; observe &rarr; repeat, until done.</dd></div>
-  <div><dt>Subagent</dt><dd>A helper Claude spawns with a fresh memory and one narrow job.</dd></div>
-  <div><dt>Subteam / fleet</dt><dd>Several subagents working the same goal in parallel. A pattern, not a feature.</dd></div>
-  <div><dt>Skill</dt><dd>A saved procedure triggered by name, e.g. <code>/research-report</code>. Loads only when called.</dd></div>
-  <div><dt>Hook</dt><dd>A command that fires automatically on an event. Guaranteed, unlike a written rule.</dd></div>
-  <div><dt>MCP</dt><dd>The standard for plugging outside services in as new tools.</dd></div>
-  <div><dt>CLAUDE.md</dt><dd>Your standing rules file. Reloaded automatically every session.</dd></div>
-  <div><dt>Repo</dt><dd>A folder tracked by git, so every change is snapshot-able and undo-able.</dd></div>
-  <div><dt>Prompt injection</dt><dd>Hostile instructions hidden in content Claude reads. Treat fetched text as data, never orders.</dd></div>
+  <div><dt>AI</dt><dd>Computers doing things that normally need a human brain.</dd></div>
+  <div><dt>Machine learning</dt><dd>Teaching a computer from examples, instead of writing rules yourself.</dd></div>
+  <div><dt>Neural network</dt><dd>A big pile of simple maths in layers. Used in deep learning.</dd></div>
+  <div><dt>LLM</dt><dd>Large Language Model. Trained on text. Guesses the next piece. Claude is one.</dd></div>
+  <div><dt>Token</dt><dd>A small piece of text, about 3 or 4 letters. Everything is counted and paid for in these.</dd></div>
+  <div><dt>Context window</dt><dd>Everything Claude can see right now. Like a desk with a size limit. Cleared when you close it.</dd></div>
+  <div><dt>Prompt</dt><dd>What you type. Your main control.</dd></div>
+  <div><dt>Hallucination</dt><dd>When Claude makes something up that sounds correct but is false.</dd></div>
+  <div><dt>Agent</dt><dd>A brain, plus tools, plus a loop, plus a goal. It does things and checks results.</dd></div>
+  <div><dt>Tool</dt><dd>One action Claude can do: search, open a page, read a file, save a file, run a command.</dd></div>
+  <div><dt>Agent loop</dt><dd>Plan, do, look at the result, repeat. Until the job is done.</dd></div>
+  <div><dt>Subagent</dt><dd>A helper Claude creates. Empty memory. One small job.</dd></div>
+  <div><dt>Subteam</dt><dd>A group of helpers working at the same time on one goal.</dd></div>
+  <div><dt>Skill</dt><dd>Saved steps you start by name, like <code>/research-report</code>.</dd></div>
+  <div><dt>Hook</dt><dd>A command that runs by itself when something happens. Always runs.</dd></div>
+  <div><dt>MCP</dt><dd>A standard way to connect Claude to other apps.</dd></div>
+  <div><dt>CLAUDE.md</dt><dd>Your rules file. Loads by itself, every time.</dd></div>
+  <div><dt>Git / repo</dt><dd>A folder that saves pictures of itself, so you can undo anything.</dd></div>
+  <div><dt>Prompt injection</dt><dd>Hidden fake orders inside a web page. Never trust text from the internet.</dd></div>
 </div>
 
-<h4>Five exercises, in increasing difficulty</h4>
+<h4>Five things to try, from easy to hard</h4>
 <ol class="steps">
-<li><strong>Fix the drift.</strong> Copy the four missing rules from the skill copy back into <code>workflow/research-report.md</code> (section 12). You will learn more from this ten-minute edit than from re-reading this page.</li>
-<li><strong>Run it light.</strong> <code>run the research workflow on &lt;something small&gt;, depth: light</code>. Watch where it stops and asks. Notice how different the report is from a plain &ldquo;write me an article&rdquo;.</li>
-<li><strong>Break it on purpose.</strong> Ask a plain question with no workflow and compare the answer to a workflow report on the same topic. The gap <em>is</em> the value of the instruction file.</li>
-<li><strong>Add one rule.</strong> Something that annoyed you in a report &mdash; add a line to <code>CLAUDE.md</code> or the workflow that prevents it. This is the real skill, and it compounds.</li>
-<li><strong>Write a second workflow.</strong> Copy <code>research-report.md</code> to something like <code>workflow/video-script.md</code>, rewrite the five phases for a different job, and register it in <code>CLAUDE.md</code>. Now you have a system, not a script.</li>
+<li><strong>Fix the two files.</strong> Copy the 4 missing rules from the skill copy into <code>workflow/research-report.md</code> (see part 12). This 10-minute job will teach you more than reading this page again.</li>
+<li><strong>Run a small one.</strong> Type: <code>run the research workflow on &lt;small topic&gt;, depth: light</code>. Watch where it stops and asks you. Notice how different it is from just saying "write me an article".</li>
+<li><strong>Compare.</strong> Ask a plain question with no workflow. Then run the workflow on the same topic. The difference between the two answers <em>is</em> the value of your instruction file.</li>
+<li><strong>Add one rule.</strong> Think of something that annoyed you in a report. Add one line to <code>CLAUDE.md</code> or the workflow file to stop it happening again. This is the real skill.</li>
+<li><strong>Make a second workflow.</strong> Copy <code>research-report.md</code> and rename it, for example <code>workflow/video-script.md</code>. Rewrite the 5 steps for a different job. Add it to <code>CLAUDE.md</code>. Now you have a system, not just one script.</li>
 </ol>
 
 <div class="here">
-<span class="here-label">The one thing to take away</span>
-<p>You are not learning to talk to a chatbot. You are learning to <strong>write down a procedure precisely enough that a capable stranger could follow it</strong> &mdash; then handing it to something that will follow it every time, without getting bored. The AI part is finished and off the shelf. The part that is yours, and the part that gets better with practice, is the instructions.</p>
+<span class="here-label">The one thing to remember</span>
+<p>You are not learning to chat with a robot.</p>
+<p>You are learning to <strong>write down a set of steps clearly enough that a smart stranger could follow them</strong>. Then you hand those steps to something that will follow them every time, and never get bored or tired.</p>
+<p>The AI part is finished and ready to use. The part that is <em>yours</em>, and the part that gets better with practice, is the instructions.</p>
 </div>
 </section>
 
-<p class="end">The Research Agent Handbook &middot; written for miraanejaz1 &middot; 18 August 2026</p>
+<p class="end">The Research Agent Handbook &middot; 18 August 2026</p>
 
 </article>
 </div>
