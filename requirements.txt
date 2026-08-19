@@ -1,0 +1,9 @@
+# Claude backend
+anthropic>=0.122.0
+
+# Gemini backend (free tier) — plus its client-side search and fetch, since
+# Google Search grounding has no free-tier quota.
+google-genai>=2.18.0
+ddgs>=9.0.0
+beautifulsoup4>=4.15.0
+lxml>=5.0.0
